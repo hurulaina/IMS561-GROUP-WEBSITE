@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>Mystery Books</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:wght@600&family=DM+Serif+Display&family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Merienda&family=Nanum+Pen+Script&family=PT+Serif&family=Poppins:wght@600&family=Redressed&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="mystery.css">
+</head>
+
+<style>
+
+:root{
+--main-color: #d3ad7f;
+--black: #13131a;
+--bg: #010103;
+--border: .1rem solid rgba(255,255,255,.3);
+}
+
+*{
+margin:0; padding:0;
+box-sizing: border-box;
+outline: none; border: none;
+text-decoration: none;
+text-transform: capitalize;
+transition: .2s linear;
+}
+
+html{
+font-size: 62.5%;
+scroll-behavior: smooth;
+scroll-padding-top: 9rem;
+overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+background: #fff;
+border-radius: 5rem;
+}
+
+section{
+padding: 5rem 9%;
+}
+
+body{
+background: #EAD3BA;
+}
+
+.btn{
+margin-top: 1rem;
+display: inline-block;
+padding: .9rem 3rem;
+font-size: 1.7rem;
+color: #fff;
+background: var(--main-color);
+cursor: pointer;
+}
+
+.btn:hover{
+letter-spacing: .2rem;
+}
+
+.header{
+background: var(--bg);
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.5rem 7%;
+border-bottom: var(--border);
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 1000;
+}
+
+.header .logo img{
+height: 6rem;
+}
+
+.header .navbar ul{
+list-style: none;
+margin: 0 1rem;
+font-size: 1rem;
+color: #fff;
+font-family: 'Cinzel Decorative', serif;
+font-weight: bold;
+}
+
+.header .navbar ul li{
+position: relative;
+float: left;
+}
+
+header .navbar ul li a{
+font-size: 15px;
+padding: 15px;
+color: white;
+display: block;
+}
+
+.header .navbar ul li a:hover{
+color: var(--main-color);
+border-bottom: .1rem solid var(--main-color);
+padding-bottom: .5rem
+}
+
+.header .navbar ul li a.active{
+color: var(--main-color);
+border-bottom: .1rem solid var(--main-color);
+padding-bottom: .5rem;
+}
+
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: var(--bg);
+display: none;
+}
+
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+
+.header .icons div{
+font-size: 2.5rem;
+color: #fff;
+cursor: pointer;
+margin-left: 2rem;
+}
+
+.header .icons div:hover{
+color:var(--main-color);
+}
+
+#menu-btn{
+display: none;
+}
+
+.header .search-form{
+position: absolute;
+top: 115%; right: 7%;
+background: #fff;
+width: 50rem;
+display: flex;
+align-items: center;
+transform: scaleY(0);
+transform-origin: top;
+}
+
+.header .search-form.active{
+transform: scaleY(1);
+}
+
+.header .search-form input{
+height: 100%;
+width: 100%;
+font-size: 1.6rem;
+color: var(--black);
+padding: 1rem;
+text-transform: none;
+}
+
+.header .search-form label{
+cursor: pointer;
+font-size: 2.2rem;
+margin-right: 1.5rem;
+color: var(--black);
+}
+
+.header .search-form label:hover{
+color: var(--main-color);
+}
+
+/*======== CART BUTTON & COUNT ========= */
+.header .icons .cart-btn {
+  position: relative;
+  font-size: 2.5rem;   /* SAME as Picture 2 */
+  color: #fff;         /* SAME as Picture 2 */
+  margin-left: 2rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header .icons .cart-btn:hover {
+  color: var(--main-color);
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #47474d;     
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form {
+  position: absolute;
+  top: 115%;
+  right: 7%;
+  width: 50rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+  z-index: 10000;
+  border-radius: .5rem;
+  overflow: visible;  /* ✅ allow suggestions to show */
+  padding-bottom: 0;  /* remove fixed height */
+}
+
+.search-form.active {
+  transform: scaleY(1);
+}
+
+.search-form input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  border: none; 
+  outline: none;
+}
+
+.search-form label {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  font-size: 2.2rem;
+  cursor: pointer;
+  z-index: 10001;  /* make sure icon is above suggestions */
+}
+
+#suggestions {
+  display: block;
+  max-height: 22rem;
+  overflow-y: auto;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ccc;
+  z-index: 9999;
+}
+
+#suggestions div {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+#suggestions div:hover {
+  background: var(--main-color);
+  color: #fff;
+}
+
+/* FULLSCREEN HERO FIX */
+.hero-wrapper {
+    width: 100%;
+    min-height: 70vh;
+    padding-top: 9.5rem;
+    background: linear-gradient(
+        to right,
+        #503625 0%,
+        #836145 45%,
+        #EAD3BA 100%
+    );
+    overflow: hidden;
+}
+
+.hero-section {
+    width: 100%;
+    height: calc(90vh - 10rem);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+}
+
+/* RIGHT TEXT */
+.hero-text {
+    padding: 9rem 7rem;
+    margin-right: 7rem;
+}
+
+.hero-text h3 {
+    font-size: 6.5rem;
+    font-family: 'Cinzel Decorative', serif;
+    color: #1b0f08;
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    margin-top: 2rem;
+    font-size: 1.9rem;
+    color: #2b1a10;
+    line-height: 1.8;
+    font-family: 'Crimson Text', serif;
+}
+
+.hero-image {
+    height: 122%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: 13rem;
+}
+
+.hero-image img {
+    height: 90%;
+    width: auto;
+    object-fit: cover;
+    margin-left: -10rem;
+    filter: drop-shadow(25px 0 30px rgba(0,0,0,0.18));
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: bold;
+}
+
+.filter-bar label {
+    font-size: 1.6rem;
+    color: #3b2618;
+}
+
+.filter-bar select {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: .6rem 1.4rem;
+    border: 1px solid rgba(175,116,77,0.5);
+    background: #f4e5d5;
+    color: #3a2416;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+/* Hover + focus polish */
+.filter-bar select:hover {
+    background: #edd8c3;
+}
+
+.filter-bar select:focus {
+    outline: none;
+    border-color: #af744d;
+}
+
+.arrivals .box-container{
+display: flex;
+flex-wrap: wrap;
+gap: 1.5rem;
+}
+
+.arrivals .box-container .box{
+flex: 1 1 25rem;
+box-shadow: 0 .5rem 1.5rem rgba(0,0,0,.1);
+border-radius: .5rem;
+border: .1rem solid rgba(0,0,0,.1);
+position: relative;
+background-color: #fff;
+}
+
+.arrivals .box-container .box .discount{
+position: absolute;
+top: 1rem; left: 1rem;
+padding: .7rem 1rem;
+font-size: 1.5rem;
+color: #B89471;
+background: #F1E5D8;
+z-index: 1;
+border-radius: .5rem;
+}
+
+.arrivals .box-container .box .image{
+position: relative;
+text-align: center;
+padding-top: 2rem;
+overflow: hidden;
+}
+
+.arrivals .box-container .box .image img{
+height: 17rem;
+width: 12rem;
+}
+
+.arrivals .box-container .box:hover .image img{
+transform: scale(1.1);
+}
+
+/*======== EDITED ========= */
+.arrivals .box-container .box .image .icons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5.5rem;
+  background: #d3ad7f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  transition: .3s ease;
+}
+
+/*======== EDITED ========= */
+.arrivals .box-container .box:hover .image .icons {
+  opacity: 1;
+}
+
+/*======== EDITED ========= */
+.arrivals .box-container .box .image .icons a {
+  color: #fff;
+  font-size: 1.8rem;
+  width: 5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*======== EDITED ========= */
+.arrivals .box-container .box .image .icons .cart.btn {
+  flex: 1;
+  font-size: 1.8rem;
+  font-weight: 600;
+  background: transparent;
+  border-left: 1px solid rgba(255,255,255,.4);
+  border-right: 1px solid rgba(255,255,255,.4);
+}
+
+.arrivals .box-container .box .image .icons a:hover{
+background: #333;
+}
+
+.arrivals .box-container .box .content{
+padding: 2rem;
+text-align: center;
+font-family: 'Poppins', sans-serif;
+}
+
+.arrivals .box-container .box .content h3{
+font-size: 1.6rem;
+color: #333;
+}
+
+.arrivals .box-container .box .content .price{
+font-size: 1.5rem;
+color: black;
+font-weight: bolder;
+padding-top: 1rem;
+}
+
+.arrivals .box-container .box .content .price span{
+font-size: 1.3rem;
+color: #999;
+font-weight: lighter;
+text-decoration: line-through;
+}
+
+.footerContainer{
+margin-top: 7rem;
+width: 100%;
+padding: 30px 30px 20px;
+background-color: #000;
+}
+
+.footerContainer .footerNav{
+margin: 20px 0;
+margin-bottom: 5px;
+}
+
+.footerContainer .footerNav ul{
+display: flex;
+justify-content: center;
+list-style-type: nondisc;
+}
+
+.footerContainer .footerNav ul li a{
+color: white;
+margin: 20px;
+text-decoration: none;
+font-size: 2.2em;
+opacity: 0.9;
+transition: 0.5s;
+font-family: 'Afacad', sans-serif;
+}
+
+.footerContainer .footerNav ul li a:hover{
+opacity: 1;
+}
+
+.footerContainer .box{
+display: flex;
+justify-content: center;
+}
+
+.footerContainer .box a{
+color: white;
+margin: 20px;
+text-decoration: none;
+font-size: 1.8em;
+opacity: 0.9;
+transition: 0.5s;
+font-family: 'Afacad', sans-serif;
+}
+
+.footerContainer .box a i{
+color: #57AF52;
+padding-right: .7rem;
+}
+
+.footerContainer .box a:hover i{
+color: #E8940A;
+transition: 0.5s;
+}
+
+.footerContainer .footerBottom{
+padding: 20px;
+text-align: center;
+}
+
+.footerContainer .footerBottom p{
+color: white;
+font-size: 1.8em;
+font-family: 'Afacad', sans-serif;
+}
+
+.footerContainer .footerBottom span{
+color: #FBC73B;
+font-size: 1em;
+font-family: 'Afacad', sans-serif;
+}
+
+/* ================= PRODUCT POPUP (DARK STYLE) ================= */
+.product-popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:3000;
+}
+
+.product-popup.active{
+  display:flex;
+}
+
+.popup-content{
+  width:40rem;
+  background:linear-gradient(145deg,#1f2933,#111827);
+  padding:3rem;
+  border-radius:20px;
+  color:#e5e7eb;
+  position:relative;
+  box-shadow:0 25px 60px rgba(0,0,0,.5);
+  animation:popupFade .35s ease;
+  max-height: 85vh;          /* prevents overflow past screen */
+  overflow-y: auto;          /* enables vertical scrolling */
+  scrollbar-width: thin;     /* Firefox */
+}
+
+.popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background: #967B58;
+  border-radius: 10px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+@keyframes popupFade{
+  from{opacity:0;transform:scale(.92)}
+  to{opacity:1;transform:scale(1)}
+}
+
+#popup-close{
+  position:absolute;
+  top:1.2rem;
+  right:1.5rem;
+  font-size:2.2rem;
+  cursor:pointer;
+  color:#9ca3af;
+  transition:.3s;
+}
+
+#popup-close:hover{
+  color:#f87171;
+  transform:rotate(90deg);
+}
+
+/* ===== BOOK ROW (NEW) ===== */
+.popup-book{
+  display:flex;
+  gap:1.6rem;
+  align-items:flex-start;
+  margin-bottom:1.6rem;
+}
+
+.popup-book img{
+  width:120px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,.45);
+  flex-shrink:0;
+}
+
+.popup-book-info{
+  flex:1;
+}
+
+.popup-book-info h2{
+  font-size:2rem;
+  color:#f9fafb;
+  margin-bottom:.6rem;
+  text-align:left;
+}
+
+.popup-book-info p{
+  font-size:1.3rem;
+  color:#d1d5db;
+  line-height:1.6;
+  text-transform:none;
+  text-align:left;
+}
+
+/* ===== FORM AREA ===== */
+.popup-content p{
+  font-size:1.3rem;
+  color:#d1d5db;
+}
+
+.popup-content label{
+  display:block;
+  margin-top:1.2rem;
+  font-size:1.2rem;
+  color:#9ca3af;
+}
+
+.popup-content input,
+.popup-content select{
+  width:100%;
+  padding:.8rem 1rem;
+  border-radius:10px;
+  background:#111827;
+  color:#f9fafb;
+  font-size:1.3rem;
+}
+
+.popup-content input:focus,
+.popup-content select:focus{
+  box-shadow:0 0 0 2px #967B58;
+}
+
+#popup-total{
+  color:#22c55e;
+  font-size:1.6rem;
+}
+
+#popup-add-cart{
+  width:100%;
+  margin-top:2rem;
+  padding:1rem;
+  border-radius:14px;
+  background:linear-gradient(135deg,#967B58,#6b563f);
+  color:#fff;
+  font-size:1.4rem;
+  cursor:pointer;
+  transition:.3s;
+}
+
+#popup-add-cart:hover{
+  letter-spacing:.1rem;
+  transform:translateY(-2px);
+}
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+
+.header{
+padding: 1.5rem 2rem;
+}
+
+section{
+padding: 3rem 2rem;
+}
+}
+
+@media (max-width:768px){
+#menu-btn{
+display: inline-block;
+}
+
+.header .navbar{
+position: absolute;
+top:100%; right: -100%;
+background: #fff;
+width: 30rem;
+height: calc(200vh - 9.5rem);
+}
+
+.header .navbar.active{
+right: 0;
+}
+
+.header .navbar ul li{
+width: 100%;
+}
+
+.header .navbar ul li a{
+color: black;
+width: 100%;
+}
+
+.header .navbar ul li a:hover{
+color: var(--main-color);
+width: 100%;
+}
+
+.header .navbar ul li ul{
+position: relative;
+width: 100%;
+color: #fff;
+}
+
+.header .navbar ul li ul li{
+background: #EACAA6;
+}
+
+.header .navbar ul li ul li a{
+color: #333;
+}
+
+.header .navbar ul li ul li a:hover{
+color: #fff;
+}
+
+.header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+
+.header .search-form{
+width: 90%;
+right: 2rem;
+}
+
+.hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+}
+
+.hero-image img {
+    height: 70vh;
+    margin-top: 2rem;
+}
+
+.footerContainer{
+width: 100%;
+text-align: center;
+}
+.footerContainer .footerNav ul{
+flex-direction: column;
+}
+.footerContainer .footerNav ul li{
+width: 100%;
+text-align: center;
+margin: 8px;
+}
+.footerContainer .box a{
+color: white;
+margin: 2%;
+padding-top: 2rem;
+}
+}
+
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading h1{
+font-size: 3rem;
+}
+.arrivals .box-container .content{
+grid-template-columns: 1fr;
+}
+.arrivals .box container .box .content h3{
+font-size: 12px;
+}
+.footerContainer{
+width: 100%;
+text-align: center;
+}
+}
+
+</style>
+
+
+<body>
+
+<header class="header">
+
+<a href="#" class="logo">
+<img src="logo2.png" alt="">
+</a>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home +</a>
+<ul>
+<li><a href="#whychooseus?">For Book Lovers</a></li>
+<li><a href="#collectionlist">Collection List</a></li>
+<li><a href="#featuredbooks">Featured Books</a></li>
+<li><a href="#specialday">Special Day, Special Book</a></li>
+</ul>
+</li>
+<li><a href="bestseller.html">Best Seller +</a>
+<ul>
+<li><a href="#top5">Top 5 Best Seller</a></li>
+<li><a href="#book">Book of the Year</a></li>
+<li><a href="#author">Author of the Year</a></li>
+</ul>
+</li>
+<li>
+  <a href="fiction.html">Fiction +</a>
+  <ul>
+    <li><a href="romance.html">Romance</a></li>
+    <li><a href="fantasy.html">Fantasy</a></li>
+    <li><a href="horror.html">Horror</a></li>
+    <li><a href="mystery.html" class="active">Mystery</a></li>
+    <li><a href="thriller.html">Thriller</a></li>
+    <li><a href="scifi.html">Sci-Fi</a></li>
+    <li><a href="dystopian.html">Dystopian</a></li>
+    <li><a href="action.html">Action</a></li>
+  </ul>
+</li>
+
+<li><a href="newarrivals.html">New Arrivals +</a>
+<ul>
+<li><a href="#scifi">Science Fiction</a></li>
+<li><a href="#romance">Romance</a></li>
+<li><a href="#fantasy">Fantasy</a></li>
+<li><a href="#domestic">Domestic Fiction</a></li>
+<li><a href="#literary">Literary</a></li>
+</ul>
+</li>
+<li><a href="aboutus.html">About Us +</a>
+<ul>
+<li><a href="#prologue">Prologue</a></li>
+<li><a href="#ourteam">Our Team</a></li>
+</ul>
+</li>
+<li><a href="contact.html">Contact +</a>
+<ul>
+<li><a href="#messenger">Messenger Owl</a></li>
+<li><a href="#gform">Google Form</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+
+<div class="icons">
+  <div class="fa-solid fa-magnifying-glass" id="search-btn"></div>
+
+  <!-- CART BUTTON & COUNT -->
+  <a href="cart.html" class="cart-btn" id="cart-btn">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="cart-count" id="cart-count">0</span>
+  </a>
+
+  <div class="fa-solid fa-bars" id="menu-btn"></div>
+</div>
+
+<div class="search-form">
+  <input type="search" id="search-box" placeholder="search here...">
+  <label for="search-box" class="fa-solid fa-magnifying-glass"></label>
+  <div id="suggestions"></div>
+</div>
+
+<!-- ===== PRODUCT POPUP ===== -->
+<div class="product-popup" id="product-popup">
+  <div class="popup-content">
+
+    <span class="fa-solid fa-xmark" id="popup-close"></span>
+
+    <!-- ✅ BOOK ROW (IMAGE + TEXT SIDE BY SIDE) -->
+    <div class="popup-book">
+      <img id="popup-img" src="" alt="">
+
+      <div class="popup-book-info">
+        <h2 id="popup-title"></h2>
+        <p id="popup-desc"></p>
+      </div>
+    </div>
+
+    <!-- ✅ REST STAYS BELOW -->
+    <p><strong>ISBN:</strong> <span id="popup-isbn"></span></p>
+
+    <label>Delivery Date</label>
+    <input type="date" id="popup-date">
+
+    <label>Free Gift / Bundle</label>
+    <select id="popup-bundle">
+      <option value="0">No bundle</option>
+      <option value="5">Bookmark (+RM5)</option>
+      <option value="10">Gift Set (+RM10)</option>
+    </select>
+
+    <label>Quantity</label>
+    <input type="number" id="popup-qty" min="1" value="1">
+
+    <p>Total Price: <strong>RM <span id="popup-total"></span></strong></p>
+
+    <button class="btn" id="popup-add-cart">Add To Cart</button>
+  </div>
+</div>
+
+</header>
+
+<section class="hero-wrapper">
+ <div class="hero-section">
+
+  <div class="hero-image">
+    <img src="bg17.png" alt="Fantasy">
+  </div>
+
+  <div class="hero-text">
+    <h3>Mystery</h3>
+    <p>"Yesterday is history,<br>tomorrow is a mystery"</p>
+  </div>
+
+</div>
+</section>
+
+<section class="arrivals" id="arrivals">
+    <div class="filter-bar">
+    <label for="priceFilter">Sort by:</label>
+    <select id="priceFilter">
+        <option value="default">Featured</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+    </select>
+</div>
+
+<div class="box-container">
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery1.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery1"
+                       data-title="Watching You"
+                       data-price="31.65"
+                       data-isbn="9781668002179"
+                       data-desc="A quiet neighborhood hides dark secrets behind closed doors. When a woman begins watching her neighbors, she uncovers truths that could destroy them all."
+                       data-img="mystery1.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Watching You</h3>
+                <div class="price"> RM31.65 <span>RM41.65</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery2.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery2"
+                       data-title="Then She Was Gone"
+                       data-price="20.00"
+                       data-isbn="9781668002179"
+                       data-desc="A mother never stops searching for answers after her teenage daughter disappears. Years later, a chance encounter brings shocking revelations about what really happened."
+                       data-img="mystery2.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Then She Was Gone</h3>
+                <div class="price"> RM20.00 <span>RM40.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery3.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery3"
+                       data-title="The Good Girl"
+                       data-price="140.00"
+                       data-isbn="9781668002179"
+                       data-desc="A young woman is kidnapped, but her behavior doesn’t match what investigators expect. As perspectives shift, the truth behind her disappearance becomes increasingly complex."
+                       data-img="mystery3.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>The Good Girl</h3>
+                <div class="price"> RM140.00 <span>170.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery4.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery4"
+                       data-title="The Other  Mrs"
+                       data-price="55.00"
+                       data-isbn="9781668002179"
+                       data-desc="A woman moves her family to a quiet town to escape the past. Soon, she realizes the secrets she’s hiding may not stay buried for long."
+                       data-img="mystery4.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>The Other  Mrs</h3>
+                <div class="price"> RM55.00 <span>RM70.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery5.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery5"
+                       data-title="Local Woman Missing"
+                       data-price="45.00"
+                       data-isbn="9781668002179"
+                       data-desc="A missing mother and a vanished child lead to a chilling investigation. Twists and hidden identities reveal nothing is as it seems."
+                       data-img="mystery5.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Local Woman Missing</h3>
+                <div class="price"> RM45.00 <span>RM63.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery6.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery6"
+                       data-title="Little Secrets"
+                       data-price="45.00"
+                       data-isbn="9781668002179"
+                       data-desc="After a tragic loss, a mother uncovers devastating secrets about her family. Lies unravel as grief turns into obsession."
+                       data-img="mystery6.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Little Secrets</h3>
+                <div class="price"> RM45.00 <span>RM60.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery7.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery7"
+                       data-title="Things We Do In The Dark"
+                       data-price="55.10"
+                       data-isbn="9781668002179"
+                       data-desc="A woman’s past resurfaces after a murder shakes her life apart. Dark choices and buried secrets come to light with dangerous consequences."
+                       data-img="mystery7.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Things We Do In The Dark</h3>
+                <div class="price"> RM55.10 <span>RM70.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery8.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery8"
+                       data-title="The Only One Left"
+                       data-price="56.15"
+                       data-isbn="9781668002179"
+                       data-desc="A caregiver is assigned to a woman accused of killing her family decades ago. As the truth slowly emerges, the past proves more terrifying than rumors."
+                       data-img="mystery8.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>The Only One Left</h3>
+                <div class="price"> RM56.15 <span>RM76.00</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery9.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery9"
+                       data-title="The Wife Before"
+                       data-price="62.89"
+                       data-isbn="9781496731111"
+                       data-desc="Samira Wilder has never had it easy, and when her latest lousy job goes south, things only promise to get harder. Until she unexpectedly meets a man who will change her life forever. Renowned pro golfer Roland Graham is wealthy, handsome, and caring, and Samira is dazzled. Best of all, he seems to understand her better than anyone ever has. And though their relationship moves a bit fast, when Roland proposes, Samira accepts. She even agrees to relocate to his secluded Colorado mansion. After all, there’s nothing to keep her in Miami, and the mansion clearly makes him happy. Soon, they are married amid a media firestorm, and Samira can't wait to make a fresh start—as the second Mrs. Graham. Samira settles into the mansion, blissfully happy—until she discovers long-hidden journals belonging to Roland’s late wife, Melanie, who died in a tragic accident. With each dusty page, Samira comes to realize that perhaps it was no accident at all—that perhaps her perfect husband is not as perfect as she thought. Even as her trust in Roland begins to dwindle and a shadow falls over her marriage and she begins to fear for her own life, Samira is determined to uncover the truth of Melanie’s troubled last days. But even good wives should know that the truth is not always what it seems . . ."
+                       data-img="mystery9.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>The Wife Before</h3>
+                <div class="price"> RM62.89 <span>RM76.89</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery10.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery10"
+                       data-title="Tell No One"
+                       data-price="52.92"
+                       data-isbn="9780593355862"
+                       data-desc="For Dr. David Beck, the loss was shattering. And every day for the past eight years, he has relived the horror of what happened. The gleaming lake. The pale moonlight. The piercing screams. The night his wife was taken. The last night he saw her alive. Everyone tells him it’s time to move on, to forget the past once and for all. But for David Beck, there can be no closure. A message has appeared on his computer, a phrase only he and his dead wife know. Suddenly Beck is taunted with the impossible—that somewhere, somehow, his wife is alive . . . and he’s been warned to tell no one."
+                       data-img="mystery10.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Tell No One</h3>
+                <div class="price"> RM52.92 <span>RM64.92</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery11.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery11"
+                       data-title="Five Survive"
+                       data-price="50.82"
+                       data-isbn="9780593374191"
+                       data-desc="Eight hours. Six friends. Five survive. Red Kenny is on a road trip for spring break with five friends: Her best friend - the older brother - his perfect girlfriend - a secret crush - a classmate - and a killer. When their RV breaks down in the middle of nowhere with no cell service, they soon realize this is no accident. They have been trapped by someone out there in the dark, someone who clearly wants one of them dead. With eight hours until dawn, the six friends must escape, or figure out which of them is the target. But is there a liar among them? Buried secrets will be forced to light and tensions inside the RV will reach deadly levels. Not all of them will survive the night. . . . "
+                       data-img="mystery11.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>Five Survive</h3>
+                <div class="price"> RM50.82 <span>RM60.82</span></div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="mystery12.jpg" alt="" width="20%">
+                <div class="icons">
+                    <a href="#" class="fa-solid fa-heart"></a>
+                    <!-- ===== POPUP ===== -->
+                    <button class="btn open-popup"
+                       data-id="mystery12"
+                       data-title="The House in the Pines (Reese's Book Club)"
+                       data-price="60.04"
+                       data-isbn="9780593186732"
+                       data-desc="Armed with only hazy memories, a woman who long ago witnessed her friend’s sudden, mysterious death, and has since spent her life trying to forget, sets out to track down answers. What she uncovers, deep in the woods, is hardly to be believed. . . . Maya was a high school senior when her best friend, Aubrey, dropped dead in front of the enigmatic man named Frank whom they’d been spending time with all summer. Seven years later, Maya lives in Boston with a loving boyfriend and is kicking the secret addiction that has allowed her to cope with what happened years ago, the gaps in her memories, and the lost time that she can’t account for. But her past comes rushing back when she comes across a recent YouTube video in which a young woman suddenly keels over and dies in a diner while sitting across from none other than Frank. Plunged into the trauma that has defined her life, Maya heads to her Berkshires hometown to relive that fateful summer—the influence Frank once had on her and the obsessive jealousy that nearly destroyed her friendship with Aubrey. At her mother’s house, she excavates fragments of her past and notices hidden messages in her deceased Guatemalan father’s book that didn’t stand out to her earlier. To save herself, she must understand a story written before she was born, but time keeps running out, and soon, all roads are leading back to Frank’s cabin. . . . Utterly unique and captivating, The House in the Pines keeps you guessing about whether we can ever fully confront the past and return home."
+                       data-img="mystery12.jpg">
+                     Add To Cart
+                    </button>
+                    <a href="#" class="fa-solid fa-share"></a>
+                </div>
+            </div>
+            <div class="content">
+                <h3>The House in the Pines</h3>
+                <div class="price"> RM60.04 <span>RM73.04</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="footerContainer">
+<div class="box">
+<a href="#"> <i class="fa-solid fa-phone"></i> +60 11-2345 6789 </a>
+<a href="#"> <i class="fa-solid fa-envelope"></i> LCOWbookstore@gmail.com </a>
+<a href="https://www.instagram.com/grey._.poetries?igsh=MWttdGFzejg0cmk1cg==" target="_blank"><i class="fa-brands fa-square-instagram" target="_blank"></i> Instagram </a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWr_w9D346NSQUY8oNSffHd2lIH3kLz8Rgdx1EF8wl5FSrw/viewform?usp=sf_link" target="_blank"><i class="fa-solid fa-clipboard"></i> Order Form </a>
+</div>
+
+<div class="footerNav">
+<ul>
+<li><a href=""> Home </a></li>
+<li><a href="bestseller.html"> Best Seller </a></li>
+<li><a href="fictions.html"> Fictions </a></li>
+<li><a href="newarrivals.html"> New Arrivals </a></li>
+<li><a href="aboutus.html"> About </a></li>
+<li><a href="contact.html"> Contact </a></li>
+</ul>
+</div>
+
+<div class="footerBottom"> 
+<p>Copyright @2024; <span> Lost Chapters of World.</span> All Right Reserved!</p>
+</div>
+</section>
+
+<!-- ===== EDITED NAVBAR JS ===== -->
+<script>
+const books = document.querySelectorAll('.book');
+
+window.addEventListener('scroll', () => {
+    const s = Math.min(window.scrollY, 400);
+
+    books.forEach(book => {
+        const bx = +book.dataset.x;
+        const by = +book.dataset.y;
+        const br = +book.dataset.r;
+
+        const x = bx + (bx > 0 ? s * 0.35 : -s * 0.35);
+        const y = by + s * 0.12;
+        const r = br + s * 0.04;
+
+        book.style.setProperty('--x', `${x}px`);
+        book.style.setProperty('--y', `${y}px`);
+        book.style.setProperty('--r', `${r}deg`);
+    });
+});
+</script>
+
+<script>
+/* ================= HEADER ICON TOGGLES ================= */
+const navbar = document.querySelector('.navbar');
+const searchForm = document.querySelector('.search-form');
+const cart = document.querySelector('.cart-items-container');
+const searchBtn = document.querySelector('#search-btn');
+const cartBtn = document.querySelector('#cart-btn');
+const menuBtn = document.querySelector('#menu-btn');
+
+searchBtn.onclick = () => {
+  searchForm.classList.toggle('active');
+  navbar.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+cartBtn.onclick = () => {
+  cart.classList.toggle('active');
+  searchForm.classList.remove('active');
+  navbar.classList.remove('active');
+};
+
+menuBtn.onclick = () => {
+  navbar.classList.toggle('active');
+  searchForm.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+/* ================= MOCK BOOK DATA ================= */
+/* ================= COMPLETE BOOK LIST ================= */
+const Books = [
+  // fictions
+  { id: "book13", title: "The Silent Patient", price: 18.99, img: "book13.jpg" },
+  { id: "book15", title: "Catherine House", price: 57.26, img: "book15.jpg" },
+  { id: "book19", title: "Desires of the Dead", price: 19.69, img: "book19.jpg" },
+  { id: "book20", title: "Just My Type", price: 22.30, img: "book20.jpg" },
+  { id: "book23", title: "Muse of Nightmares", price: 31.05, img: "book23.jpg" },
+  { id: "book26", title: "The Drowning Woman", price: 44.84, img: "book26.jpg" },
+  { id: "book28", title: "The Darkest Mind", price: 42.90, img: "book28.jpg" },
+  { id: "book30", title: "Last Days", price: 26.90, img: "book30.jpg" },
+  { id: "book31", title: "Watching You", price: 31.65, img: "book31.jpg" },
+  { id: "book33", title: "The Dispossessed", price: 32.00, img: "book33.jpg" },
+  { id: "book45", title: "Late Nights on Air", price: 36.72, img: "book45.jpg" },
+  { id: "book51", title: "Beside A Burning Sea", price: 28.40, img: "book51.jpg" },
+  { id: "book53", title: "The Spellman Files", price: 36.72, img: "book53.jpg" },
+  { id: "book56", title: "I Am Number Four", price: 15.50, img: "book56.jpg" },
+  { id: "book57", title: "Out of the Blue", price: 34.50, img: "book57.jpg" },
+  { id: "book58", title: "The One Hundred Year Old Man Who Climbed Out The Window and Disappeared", price: 32.30, img: "book58.jpg" },
+  { id: "book59", title: "Help Me, Jacques Cousteau", price: 20.45, img: "book59.jpg" },
+  { id: "book61", title: "Me and Kaminski", price: 20.88, img: "book61.jpg" },
+
+  // romance
+  { id: "romance2", title: "Waking Romeo", price: 35.24, img: "romance2.jpg" },
+  { id: "romance3", title: "The Moon and More", price: 30.28, img: "romance3.jpg" },
+  { id: "romance4", title: "The Loving Game", price: 30.75, img: "romance4.jpg" },
+  { id: "romance5", title: "Mile High", price: 65.03, img: "romance5.jpg" },
+  { id: "romance6", title: "Final Offer", price: 37.74, img: "romance6.jpg" },
+  { id: "romance7", title: "All Rhodes Lead Here", price: 60.40, img: "romance7.jpg" },
+
+  // fantasy
+  { id: "fantasy1", title: "Dance of Thieves", price: 22.58, img: "fantasy1.jpg" },
+  { id: "fantasy2", title: "A Darker Shade of Magic", price: 42.90, img: "fantasy2.jpg" },
+  { id: "fantasy3", title: "The Final Empire", price: 50.00, img: "fantasy3.jpg" },
+  { id: "fantasy4", title: "Once Upon A Broken Heart", price: 50.00, img: "fantasy4.jpg" },
+  { id: "fantasy5", title: "Caraval", price: 55.90, img: "fantasy5.jpg" },
+  { id: "fantasy6", title: "Powerless", price: 60.00, img: "fantasy6.jpg" },
+  { id: "fantasy7", title: "The Serpent & The Wings of Night", price: 80.00, img: "fantasy7.jpg" },
+  { id: "fantasy8", title: "Divine Rivals", price: 75.64, img: "fantasy8.jpg" },
+
+  // horror
+  { id: "horror1", title: "Last Days", price: 50.00, img: "horror1.jpg" },
+  { id: "horror2", title: "Dark Matter", price: 75.50, img: "horror2.jpg" },
+  { id: "horror3", title: "Naomi's Room", price: 45.10, img: "horror3.jpg" },
+  { id: "horror4", title: "The Exorcist's House", price: 90.55, img: "horror4.jpg" },
+  { id: "horror5", title: "Marla", price: 18.55, img: "horror5.jpg" },
+  { id: "horror6", title: "Echo", price: 60.10, img: "horror6.jpg" },
+  { id: "horror7", title: "Dead Inside", price: 55.70, img: "horror7.jpg" },
+  { id: "horror8", title: "No One Rides for Free", price: 31.65, img: "horror8.jpg" },
+
+  // mystery
+  { id: "mystery2", title: "Then She Was Gone", price: 20.00, img: "mystery2.jpg" },
+  { id: "mystery3", title: "The Good Girl", price: 140.00, img: "mystery3.jpg" },
+  { id: "mystery4", title: "The Other Mrs", price: 55.00, img: "mystery4.jpg" },
+  { id: "mystery5", title: "Local Woman Missing", price: 45.00, img: "mystery5.jpg" },
+  { id: "mystery6", title: "Little Secrets", price: 45.00, img: "mystery6.jpg" },
+  { id: "mystery7", title: "Things We Do In The Dark", price: 55.10, img: "mystery7.jpg" },
+  { id: "mystery8", title: "The Only One Left", price: 56.15, img: "mystery8.jpg" },
+
+  // thriller
+  { id: "thriller2", title: "The Overnight Guest", price: 30.30, img: "thriller2.jpg" },
+  { id: "thriller3", title: "All The Sinners Bleed", price: 53.15, img: "thriller3.jpg" },
+  { id: "thriller4", title: "The One", price: 43.65, img: "thriller4.jpg" },
+  { id: "thriller5", title: "Look Closer", price: 55.13, img: "thriller5.jpg" },
+  { id: "thriller6", title: "The Inmate", price: 58.02, img: "thriller6.jpg" },
+  { id: "thriller7", title: "Never Lie", price: 48.54, img: "thriller7.jpg" },
+  { id: "thriller8", title: "The Last Word", price: 56.32, img: "thriller8.jpg" },
+
+  // scifi
+  { id: "scifi1", title: "The Dispossessed", price: 29.65, img: "scifi1.jpg" },
+  { id: "scifi2", title: "Children of Time", price: 45.19, img: "scifi2.jpg" },
+  { id: "scifi3", title: "Dune", price: 88.18, img: "scifi3.jpg" },
+  { id: "scifi4", title: "Childhood's End", price: 25.05, img: "scifi4.jpg" },
+  { id: "scifi5", title: "Hyperion", price: 55.03, img: "scifi5.jpg" },
+  { id: "scifi6", title: "The Last Watch", price: 65.14, img: "scifi6.jpg" },
+  { id: "scifi7", title: "Red Rising", price: 40.22, img: "scifi7.jpg" },
+  { id: "scifi8", title: "Ten Low", price: 40.13, img: "scifi8.jpg" },
+
+  // dystopian
+  { id: "dystopian1", title: "The Hunger Game", price: 84.95, img: "dystopian1.jpg" },
+  { id: "dystopian2", title: "Shatter Me", price: 31.65, img: "dystopian2.jpg" },
+  { id: "dystopian3", title: "Children of Men", price: 31.65, img: "dystopian3.jpg" },
+  { id: "dystopian4", title: "1984", price: 31.65, img: "dystopian4.jpg" },
+  { id: "dystopian5", title: "Fahrenheit 451", price: 31.65, img: "dystopian5.jpg" },
+  { id: "dystopian6", title: "Divergent", price: 31.65, img: "dystopian6.jpg" },
+  { id: "dystopian7", title: "The Maze Runner", price: 31.65, img: "dystopian7.jpg" },
+  { id: "dystopian8", title: "The Giver", price: 31.65, img: "dystopian8.jpg" },
+
+  // action
+  { id: "action1", title: "The Riftwalkers", price: 52.73, img: "action1.jpg" },
+  { id: "action2", title: "Lone Wolf", price: 10.89, img: "action2.jpg" },
+  { id: "action3", title: "The Asset", price: 26.40, img: "action3.jpg" },
+  { id: "action4", title: "Blind Hate", price: 35.25, img: "action4.jpg" },
+  { id: "action5", title: "Winsome Lose Some", price: 42.66, img: "action5.jpg" },
+  { id: "action6", title: "Gloom", price: 80.99, img: "action6.jpg" },
+  { id: "action7", title: "The Secret City", price: 85.45, img: "action7.jpg" },
+  { id: "action8", title: "Evolution", price: 53.48, img: "action8.jpg" },
+
+  // Best Sellers
+  { title: "The Heaven & Earth Grocery Store", img: "literary9.jpg", price: "RM130.30" },
+  { title: "Iron Flame (The Empyrean Book 2)", img: "book63.jpg", price: "RM86.85" },
+  { title: "Icebreaker", img: "book64.jpg", price: "RM181.53" },
+  { title: "Lessons in Chemistry", img: "book65.jpg", price: "RM71.54" },
+
+/* =======================
+   SCIENCE FICTION
+======================= */
+  { id: "scifi1", title: "The Left Hand of Darkness", price: 84.95, img: "science1.jpg" },
+  { id: "scifi2", title: "Hyperion", price: 42.50, img: "science2.jpg" },
+  { id: "scifi3", title: "Jurassic Park", price: 46.90, img: "science3.jpg" },
+  { id: "scifi4", title: "Network Effect", price: 95.90, img: "science4.jpg" },
+  { id: "scifi5", title: "I Am Number Four", price: 50.43, img: "science5.jpg" },
+  { id: "scifi6", title: "The Deep", price: 42.59, img: "science6.jpg" },
+  { id: "scifi7", title: "Light From Uncommon Stars", price: 129.79, img: "science7.jpg" },
+  { id: "scifi8", title: "Dead Silence", price: 99.01, img: "science8.jpg" },
+
+/* =======================
+   ROMANCE
+======================= */
+  { id: "romance1", title: "The Lotus Eater", price: 25.00, img: "rom1.jpg" },
+  { id: "romance2", title: "Star", price: 16.00, img: "rom2.jpg" },
+  { id: "romance3", title: "Late Nights on Air", price: 84.95, img: "rom3.jpg" },
+  { id: "romance4", title: "Safe Haven", price: 10.00, img: "rom4.jpg" },
+  { id: "romance5", title: "Sisters", price: 20.90, img: "rom5.jpg" },
+  { id: "romance6", title: "First Comes Love", price: 65.95, img: "rom6.jpg" },
+  { id: "romance7", title: "Beside A Burning Sea", price: 74.43, img: "rom7.jpg" },
+
+/* =======================
+   FANTASY
+======================= */
+  { id: "fantasy1", title: "The Fifth Season", price: 67.37, img: "fant1.jpg" },
+  { id: "fantasy2", title: "Children of Blood & Bone", price: 41.90, img: "fant2.jpg" },
+  { id: "fantasy3", title: "The Fellowship of the Ring", price: 57.95, img: "fant3.jpg" },
+  { id: "fantasy4", title: "Get In Trouble", price: 17.90, img: "fant4.jpg" },
+  { id: "fantasy5", title: "The Black Tides of Heaven", price: 85.31, img: "fant5.jpg" },
+  { id: "fantasy6", title: "The Lord of the Rings", price: 82.48, img: "fant6.jpg" },
+  { id: "fantasy7", title: "The Night Circus", price: 79.13, img: "fant7.jpg" },
+  { id: "fantasy8", title: "Ember in the Ashes", price: 59.34, img: "fant8.jpg" },
+  { id: "fantasy9", title: "Alice's Adventures in Wonderland", price: 12.90, img: "fant9.jpg" },
+  { id: "fantasy10", title: "Angeology", price: 122.79, img: "fant10.jpg" },
+
+/* =======================
+   DOMESTIC FICTION
+======================= */
+  { id: "domestic1", title: "Crazy Rich Asians", price: 37.95, img: "dom1.jpg" },
+  { id: "domestic2", title: "Out Of The Blue", price: 46.31, img: "dom2.jpg" },
+  { id: "domestic3", title: "Help Me, Jacques Cousteau", price: 10.00, img: "dom3.jpg" },
+  { id: "domestic4", title: "The Cinderella Pact", price: 20.69, img: "dom4.jpg" },
+  { id: "domestic5", title: "The Spellman Files", price: 10.00, img: "dom5.jpg" },
+  { id: "domestic6", title: "Danielle Steel", price: 99.90, img: "dom6.jpg" },
+  { id: "domestic7", title: "Truths I Never Told You", price: 67.44, img: "dom7.jpg" },
+  { id: "domestic8", title: "All the Ugly & Wonderful Things", price: 84.23, img: "dom8.jpg" },
+  { id: "domestic9", title: "Wrong Place Wrong Time", price: 49.69, img: "dom9.jpg" },
+  { id: "domestic10", title: "Do No Harm", price: 93.18, img: "dom10.jpg" },
+  { id: "domestic11", title: "A Light in the Forest", price: 120.97, img: "dom11.jpg" },
+  { id: "domestic12", title: "The Keeper of Stories", price: 13.92, img: "dom12.jpg" },
+
+/* =======================
+   LITERARY
+======================= */
+  { id: "literary1", title: "Me and Kaminski", price: 8.29, img: "literary1.jpg" },
+  { id: "literary2", title: "More Than It Hurts You", price: 116.50, img: "literary2.jpg" },
+  { id: "literary3", title: "The Secret History", price: 33.19, img: "literary3.jpg" },
+  { id: "literary4", title: "Station Eleven", price: 97.74, img: "literary4.jpg" },
+  { id: "literary5", title: "Convenience Store Woman", price: 25.00, img: "literary5.jpg" },
+  { id: "literary6", title: "The Goldfinch", price: 48.79, img: "literary6.jpg" },
+  { id: "literary7", title: "Trust", price: 71.50, img: "literary7.jpg" },
+  { id: "literary8", title: "The Covenant of Water", price: 57.39, img: "literary8.jpg" },
+  { id: "literary9", title: "The Heaven & Earth Grocery Store", price: 130.30, img: "literary9.jpg" },
+  { id: "literary10", title: "Frankenstein", price: 66.98, img: "literary10.jpg" }
+];
+
+/* ================= SEARCH ELEMENTS ================= */
+const searchInput = document.getElementById("search-box");
+const suggestionsBox = document.getElementById("suggestions");
+
+/* ================= LIVE SUGGESTIONS ================= */
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+
+  if (!query) return;
+
+  const matches = Books.filter(book =>
+    book.title.toLowerCase().includes(query)
+  );
+
+  matches.forEach(book => {
+    const div = document.createElement("div");
+    div.textContent = book.title;
+    div.style.cursor = "pointer";
+    div.style.padding = "0.5rem 1rem";
+
+    div.onclick = () => {
+      window.location.href = `search.html?q=${encodeURIComponent(book.title)}`;
+    };
+
+    suggestionsBox.appendChild(div);
+  });
+});
+
+/* ================= ENTER KEY OR ICON CLICK ================= */
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    goToSearch();
+  }
+});
+
+document.querySelector(".search-form label").onclick = goToSearch;
+
+function goToSearch() {
+  const query = searchInput.value.trim();
+  if (query !== "") {
+    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+  }
+}
+
+/* ================= SEARCH PAGE RESULTS ================= */
+const params = new URLSearchParams(window.location.search);
+const searchQuery = params.get("q") || "";
+
+if (document.getElementById("search-title")) {
+  document.getElementById("search-title").innerText = `Search results for "${searchQuery}"`;
+  document.getElementById("searchInput").value = searchQuery;
+
+  const resultsContainer = document.getElementById("results");
+  const filtered = books.filter(book =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  document.getElementById("result-count").innerText = `Showing ${filtered.length} result(s)`;
+
+  resultsContainer.innerHTML = filtered.map(book => `
+    <div class="gallery-box">
+      <img src="${book.img}" alt="${book.title}">
+      <div class="gallery-info">
+        <h4>${book.title}</h4>
+        <p>${book.price}</p>
+      </div>
+    </div>
+  `).join("");
+}
+</script>
+
+<script>
+const filter = document.getElementById("priceFilter");
+const container = document.querySelector(".box-container");
+const boxes = Array.from(container.children);
+
+// Save original order
+const originalOrder = [...boxes];
+
+function getPrice(box) {
+    const priceText = box.querySelector(".price").childNodes[0].textContent;
+    return parseFloat(priceText.replace("RM", "").trim());
+}
+
+filter.addEventListener("change", function () {
+    let sortedBoxes;
+
+    if (this.value === "low-high") {
+        sortedBoxes = [...boxes].sort((a, b) => getPrice(a) - getPrice(b));
+    } 
+    else if (this.value === "high-low") {
+        sortedBoxes = [...boxes].sort((a, b) => getPrice(b) - getPrice(a));
+    } 
+    else {
+        sortedBoxes = originalOrder;
+    }
+
+    container.innerHTML = "";
+    sortedBoxes.forEach(box => container.appendChild(box));
+});
+</script>
+
+<!-- ===== POPUP JS ===== -->
+<script>
+const popup = document.getElementById("product-popup");
+const popupTitle = document.getElementById("popup-title");
+const popupDesc = document.getElementById("popup-desc");
+const popupImg = document.getElementById("popup-img");
+const popupISBN = document.getElementById("popup-isbn");
+const popupQty = document.getElementById("popup-qty");
+const popupDate = document.getElementById("popup-date");
+const popupBundle = document.getElementById("popup-bundle");
+const popupTotal = document.getElementById("popup-total");
+
+let basePrice = 0;
+
+document.querySelectorAll(".open-popup").forEach(btn => {
+  btn.onclick = e => {
+    e.preventDefault();
+
+    popup.dataset.id = btn.dataset.id;
+    popup.dataset.title = btn.dataset.title;
+    popup.dataset.img = btn.dataset.img;
+
+    basePrice = parseFloat(btn.dataset.price);
+
+    popupTitle.textContent = btn.dataset.title;
+    popupDesc.textContent = btn.dataset.desc;
+    popupISBN.textContent = btn.dataset.isbn;
+    popupImg.src = btn.dataset.img;
+
+    popupQty.value = 1;
+    popupBundle.value = 0;
+    popupDate.value = "";
+
+    updateTotal();
+    popup.classList.add("active");
+  };
+});
+
+function updateTotal() {
+  const qty = parseInt(popupQty.value) || 1;
+  const bundle = parseFloat(popupBundle.value);
+  popupTotal.textContent = ((basePrice * qty) + bundle).toFixed(2);
+}
+
+popupQty.oninput = updateTotal;
+popupBundle.onchange = updateTotal;
+
+document.getElementById("popup-close").onclick = () => {
+  popup.classList.remove("active");
+};
+
+document.getElementById("popup-add-cart").onclick = () => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item = {
+    id: popup.dataset.id,
+    title: popupTitle.textContent,
+    price: basePrice,
+    qty: parseInt(popupQty.value),
+    img: popupImg.src,
+    delivery: popupDate.value,
+    bundle: popupBundle.options[popupBundle.selectedIndex].text
+  };
+
+  const existing = cart.find(i => i.id === item.id);
+  if (existing) existing.qty += item.qty;
+  else cart.push(item);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  popup.classList.remove("active");
+};
+</script>
+
+<!-- ===== CART COUNT JS ===== -->
+<script>
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cart-count").textContent =
+    cart.reduce((sum, item) => sum + item.qty, 0);
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+
+</body>
+</html>

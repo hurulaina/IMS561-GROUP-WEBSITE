@@ -1,0 +1,2334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fictions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:wght@600&family=DM+Serif+Display&family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Merienda&family=Nanum+Pen+Script&family=PT+Serif&family=Poppins:wght@600&family=Redressed&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="fiction.css">
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="#" class="logo">
+<img src="logo2.png" alt="">
+</a>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home +</a>
+<ul>
+<li><a href="#whychooseus?">For Book Lovers</a></li>
+<li><a href="#collectionlist">Collection List</a></li>
+<li><a href="#featuredbooks">Featured Books</a></li>
+<li><a href="#specialday">Special Day, Special Book</a></li>
+</ul>
+</li>
+<li><a href="bestseller.html">Best Seller +</a>
+<ul>
+<li><a href="#top5">Top 5 Best Seller</a></li>
+<li><a href="#book">Book of the Year</a></li>
+<li><a href="#author">Author of the Year</a></li>
+</ul>
+</li>
+
+<li>
+  <a href="fiction.html" class="active">Fiction +</a>
+  <ul>
+    <li><a href="romance.html">Romance</a></li>
+    <li><a href="fantasy.html">Fantasy</a></li>
+    <li><a href="horror.html">Horror</a></li>
+    <li><a href="mystery.html">Mystery</a></li>
+    <li><a href="thriller.html">Thriller</a></li>
+    <li><a href="scifi.html">Sci-Fi</a></li>
+    <li><a href="dystopian.html">Dystopian</a></li>
+    <li><a href="action.html">Action</a></li>
+  </ul>
+</li>
+
+<li><a href="newarrivals.html">New Arrivals +</a>
+<ul>
+<li><a href="#scifi">Science Fiction</a></li>
+<li><a href="#romance">Romance</a></li>
+<li><a href="#fantasy">Fantasy</a></li>
+<li><a href="#domestic">Domestic Fiction</a></li>
+<li><a href="#literary">Literary</a></li>
+</ul>
+</li>
+<li><a href="aboutus.html">About Us +</a>
+<ul>
+<li><a href="#prologue">Prologue</a></li>
+<li><a href="#ourteam">Our Team</a></li>
+</ul>
+</li>
+<li><a href="contact.html">Contact +</a>
+<ul>
+<li><a href="#messenger">Messenger Owl</a></li>
+<li><a href="#gform">Google Form</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+
+<div class="icons">
+  <div class="fa-solid fa-magnifying-glass" id="search-btn"></div>
+
+  <!-- CART BUTTON & COUNT -->
+  <a href="cart.html" class="cart-btn" id="cart-btn">
+    <i class="fa-solid fa-cart-shopping"></i>
+    <span class="cart-count" id="cart-count">0</span>
+  </a>
+
+  <div class="fa-solid fa-bars" id="menu-btn"></div>
+</div>
+
+<div class="search-form">
+  <input type="search" id="search-box" placeholder="search here...">
+  <label for="search-box" class="fa-solid fa-magnifying-glass"></label>
+  <div id="suggestions"></div>
+</div>
+
+<!-- PRODUCT POPUP -->
+<div class="product-popup" id="product-popup">
+  <div class="popup-content">
+    <span class="fa-solid fa-xmark" id="popup-close"></span>
+
+    <!-- BOOK INFO ROW -->
+    <div class="popup-book">
+      <img id="popup-img" src="" alt="">
+      <div class="popup-book-info">
+        <h2 id="popup-title"></h2>
+        <p id="popup-desc"></p>
+      </div>
+    </div>
+
+    <p><strong>ISBN:</strong> <span id="popup-isbn"></span></p>
+
+    <label>Delivery Date</label>
+    <input type="date" id="popup-date">
+
+    <label>Free Gift / Bundle</label>
+    <select id="popup-bundle">
+      <option value="0">No bundle</option>
+      <option value="5">Bookmark (+RM5)</option>
+      <option value="10">Gift Set (+RM10)</option>
+    </select>
+
+    <label>Quantity</label>
+    <input type="number" id="popup-qty" min="1" value="1">
+
+    <p>Total Price: <strong>RM <span id="popup-total"></span></strong></p>
+
+    <button id="popup-add-cart">Add To Cart</button>
+
+  </div>
+</div>
+
+</header>
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>The <span>Arcane </span>Vault<br>Of Worlds</h3>
+        <p>Step into forgotten realms, forbidden libraries, <br>and stories waiting to be rediscovered.
+        </p>
+    </div>
+
+    <!-- LEFT FLOATING BOOKS -->
+    <div class="float-left">
+        <div class="book" data-x="-60" data-y="-190" data-r="-6">
+            <img src="thriller1.jpg">
+        </div>
+        <div class="book" data-x="-130" data-y="-10" data-r="4">
+            <img src="romance2.jpg">
+        </div>
+        <div class="book" data-x="-40" data-y="190" data-r="-8">
+            <img src="mystery2.jpg">
+        </div>
+    </div>
+
+    <!-- RIGHT FLOATING BOOKS -->
+    <div class="float-right">
+        <div class="book" data-x="60" data-y="-170" data-r="7">
+            <img src="fantasy1.jpg">
+        </div>
+        <div class="book" data-x="140" data-y="10" data-r="-5">
+            <img src="horror3.jpg">
+        </div>
+        <div class="book" data-x="50" data-y="210" data-r="6">
+            <img src="scifi3.jpg">
+        </div>
+    </div>
+
+</section>
+
+<section class="featured" id="featured">
+<h1 class="heading"><span>fictions</span></h1>
+<h1 class="heading1"><a name="romance"><span>Romance</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance1.jpg" alt="">
+</div>
+<div class="content">
+<h3>Things We Never Got Over</h3>
+<div class="price">RM36.72 <span>RM46.72</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance1"
+        data-title="Things We Never Got Over"
+        data-price="36.72"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance1.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Waking Romeo</h3>
+<div class="price">RM35.24 <span>RM55.24</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance2"
+        data-title="Waking Romeo"
+        data-price="35.24"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance2.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance3.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Moon and More</h3>
+<div class="price">RM30.28 <span>RM50.28</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance3"
+        data-title="The Moon and More"
+        data-price="30.28"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance3.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance4.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Loving Game</h3>
+<div class="price">RM30.75 <span>RM50.75</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance4"
+        data-title="The Loving Game"
+        data-price="30.75"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance4.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Mile High</h3>
+<div class="price">RM65.03 <span>RM75.03</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance5"
+        data-title="Mile High"
+        data-price="65.03"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance5.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Final Offer</h3>
+<div class="price">RM37.74 <span>RM47.74</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance6"
+        data-title="Final Offer"
+        data-price="37.74"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance6.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance7.jpg" alt="">
+</div>
+<div class="content">
+<h3>All Rhodes Lead Here</h3>
+<div class="price">RM60.40 <span>RM70.40</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance7"
+        data-title="All Rhodes Lead Here"
+        data-price="60.40"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance7.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="romance8.jpg" alt="">
+</div>
+<div class="content">
+<h3>Archer's Voice</h3>
+<div class="price">RM38.01 <span>RM48.01</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="romance8"
+        data-title="Archer's Voice"
+        data-price="38.01"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="romance8.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="romance.html" class="see-more-btn">see more</a>
+</section>
+
+
+<section class="featured" id="featured">
+<h1 class="heading2"><a name="fantasy"><span>Fantasy</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy1.jpg" alt="">
+</div>
+<div class="content">
+<h3>Dance of Thieves</h3>
+<div class="price">RM22.58 <span>RM32.58</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy1"
+        data-title="Dance of Thieves"
+        data-price="22.58"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy1.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy2.jpg" alt="">
+</div>
+<div class="content">
+<h3>A Darker Shade of Magic</h3>
+<div class="price">RM42.90 <span>RM52.90</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy2"
+        data-title="A Darker Shade of Magic"
+        data-price="42.90"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy2.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy3.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Final Empire</h3>
+<div class="price">RM50.00 <span>RM60.00</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy3"
+        data-title="The Final Empire"
+        data-price="50.00"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy3.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy4.jpg" alt="">
+</div>
+<div class="content">
+<h3>Once Upon A Broken Heart</h3>
+<div class="price">RM50.00 <span>RM60.00</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy4"
+        data-title="Once Upon A Broken Heart"
+        data-price="50.00"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy4.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Caraval</h3>
+<div class="price">RM55.90 <span>RM65.90</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy5"
+        data-title="Caraval"
+        data-price="55.90"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy5.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Powerless</h3>
+<div class="price">RM60.00 <span>RM70.00</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy6"
+        data-title="Powerless"
+        data-price="60.00"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy6.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy7.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Serpent & The Wings of Night</h3>
+<div class="price">RM80.00 <span>RM100.00</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy7"
+        data-title="The Serpent & The Wings of Night"
+        data-price="80.00"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy7.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="fantasy8.jpg" alt="">
+</div>
+<div class="content">
+<h3>Divine Rivals</h3>
+<div class="price">RM75.64 <span>RM95.00</span></div>
+   <!-- ===== POPUP ===== -->
+      <button class="btn open-popup"
+        data-id="fantasy8"
+        data-title="Divine Rivals"
+        data-price="75.64"
+        data-isbn="9781668002179"
+        data-desc="A bestselling romance novel about love, rivalry, and hockey."
+        data-img="fantasy8.jpg">
+        Add To Cart
+      </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="fantasy.html" class="see-more-btn">see more</a>
+</section>
+
+
+<section class="featured" id="featured">
+<h1 class="heading3"><a name="horror"><span>Horror</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror1.jpg" alt="">
+</div>
+<div class="content">
+<h3>Last Days</h3>
+<div class="price">RM50.00 <span>RM80.00</span></div>
+  <!-- ===== POPUP ===== -->
+    <button class="btn open-popup"
+      data-id="horror1"
+      data-title="Last Days"
+      data-price="50.00"
+      data-isbn="9781668002179"
+      data-desc="A bestselling romance novel about love, rivalry, and hockey."
+      data-img="horror1.jpg">
+      Add To Cart
+    </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Dark Matter</h3>
+<div class="price">RM75.50 <span>RM95.50</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror2"
+    data-title="Dark Matter"
+    data-price="75.50"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror3.jpg" alt="">
+</div>
+<div class="content">
+<h3>Naomi's Room</h3>
+<div class="price">RM45.10 <span>RM65.10</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror3"
+    data-title="Naomi's Room"
+    data-price="45.10"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror4.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Exorcist's House</h3>
+<div class="price">RM90.55 <span>RM106.55</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror4"
+    data-title="The Exorcist's House"
+    data-price="90.55"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror4.jpg">
+    Add To Cart
+   </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Marla</h3>
+<div class="price">RM18.55 <span>RM28.55</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror5"
+    data-title="Marla"
+    data-price="18.55"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror5.jpg">
+    Add To Cart
+    </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Echo</h3>
+<div class="price">RM60.10 <span>RM70.10</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror6"
+    data-title="Echo"
+    data-price="60.10"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror7.jpg" alt="">
+</div>
+<div class="content">
+<h3>Dead Inside</h3>
+<div class="price">RM55.70 <span>RM66.70</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror7"
+    data-title="Dead Inside"
+    data-price="55.70"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="horror8.jpg" alt="">
+</div>
+<div class="content">
+<h3>No One Rides for Free</h3>
+<div class="price">RM31.65 <span>RM41.65</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="horror8"
+    data-title="No One Rides for Free"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="horror8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="horror.html" class="see-more-btn">see more</a>
+</section>
+
+<section class="featured" id="featured">
+<h1 class="heading4"><a name="mystery"><span>Mystery</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery1.jpg" alt="">
+</div>
+<div class="content">
+<h3>Watching You</h3>
+<div class="price">RM31.65 <span>RM41.65</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery1"
+    data-title="Watching You"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery1.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Then She Was Gone</h3>
+<div class="price">RM20.00 <span>RM40.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery2"
+    data-title="Then She Was Gone"
+    data-price="20.00"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery3.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Good Girl</h3>
+<div class="price">RM140.00 <span>170.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery3"
+    data-title="The Good Girl"
+    data-price="140.00"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery4.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Other  Mrs</h3>
+<div class="price">RM55.00 <span>RM70.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery4"
+    data-title="The Other  Mrs"
+    data-price="55.00"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery4.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Local Woman Missing</h3>
+<div class="price">RM45.00 <span>RM63.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery5"
+    data-title="Local Woman Missing"
+    data-price="45.00"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery5.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Little Secrets</h3>
+<div class="price">RM45.00 <span>RM60.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery6"
+    data-title="Little Secrets"
+    data-price="45.00"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery7.jpg" alt="">
+</div>
+<div class="content">
+<h3>Things We Do In The Dark</h3>
+<div class="price">RM55.10 <span>RM70.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery7"
+    data-title="Things We Do In The Dark"
+    data-price="55.10"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="mystery8.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Only One Left</h3>
+<div class="price">RM56.15 <span>RM76.00</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="mystery8"
+    data-title="The Only One Left"
+    data-price="56.15"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="mystery8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="mystery.html" class="see-more-btn">see more</a>
+</section>
+
+<section class="featured" id="featured">
+<h1 class="heading5"><a name="thriller"><span>Thriller</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller1.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Drowning Woman</h3>
+<div class="price">RM44.84 <span>RM64.84</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller1"
+    data-title="The Drowning Woman"
+    data-price="44.84"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller1.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller2.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Overnight Guest</h3>
+<div class="price">RM30.30 <span>RM46.30</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller2"
+    data-title="The Overnight Guest"
+    data-price="30.30"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller3.jpg" alt="">
+</div>
+<div class="content">
+<h3>All The Sinners Bleed</h3>
+<div class="price">RM53.15 <span>RM77.81</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller3"
+    data-title="All The Sinners Bleed"
+    data-price="53.15"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller4.jpg" alt="">
+</div>
+<div class="content">
+<h3>The One</h3>
+<div class="price">RM43.65 <span>RM56.64</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller4"
+    data-title="The One"
+    data-price="43.65"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller4.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Look Closer</h3>
+<div class="price">RM55.13 <span>RM75.11</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller5"
+    data-title="Look Closer"
+    data-price="55.13"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller5.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller6.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Inmate</h3>
+<div class="price">RM58.02 <span>RM75.03</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller6"
+    data-title="The Inmate"
+    data-price="58.02"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller7.jpg" alt="">
+</div>
+<div class="content">
+<h3>Never Lie</h3>
+<div class="price">RM48.54 <span>RM62.47</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller7"
+    data-title="Never Lie"
+    data-price="48.54"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="thriller8.jpg" alt="">
+</div>
+
+<div class="content">
+<h3>The Last Word</h3>
+<div class="price">RM56.32 <span>RM70.52</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="thriller8"
+    data-title="The Last Word"
+    data-price="56.32"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="thriller8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="thriller.html" class="see-more-btn">see more</a>
+</section>
+
+
+<section class="featured" id="featured">
+<h1 class="heading6"><a name="scifi"><span>Sci-Fi</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi1.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Dispossessed</h3>
+<div class="price">RM29.65 <span>RM35.64</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi1"
+    data-title="The Dispossessed"
+    data-price="29.65"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi1.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Children of Time</h3>
+<div class="price">RM45.19 <span>RM59.18</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi2"
+    data-title="Children of Time"
+    data-price="45.19"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi3.jpg" alt="">
+</div>
+<div class="content">
+<h3>Dune</h3>
+<div class="price">RM88.18 <span>RM97.28</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi3"
+    data-title="Dune"
+    data-price="88.18"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi4.jpg" alt="">
+</div>
+<div class="content">
+<h3>Chilhood's End</h3>
+<div class="price">RM25.05 <span>RM37.03</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi4"
+    data-title="Chilhood's End"
+    data-price="25.05"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi4.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Hyperion</h3>
+<div class="price">RM55.03 <span>RM69.01</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi5"
+    data-title="Hyperion"
+    data-price="55.03"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi5.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi6.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Last Watch</h3>
+<div class="price">RM65.14 <span>RM74.11</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi6"
+    data-title="The Last Watch"
+    data-price="65.14"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi7.jpg" alt="">
+</div>
+<div class="content">
+<h3>Red Rising</h3>
+<div class="price">RM40.22 <span>RM50.61</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi7"
+    data-title="Red Rising"
+    data-price="40.22"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="scifi8.jpg" alt="">
+</div>
+<div class="content">
+<h3>Ten Low</h3>
+<div class="price">RM40.13 <span>RM55.10</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="scifi8"
+    data-title="Ten Low"
+    data-price="40.13"
+    data-isbn="9781668002179"
+    data-desc="A bestselling romance novel about love, rivalry, and hockey."
+    data-img="scifi8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="scifi.html" class="see-more-btn">see more</a>
+</section>
+
+
+<section class="featured" id="featured">
+<h1 class="heading7"><a name="dystopian"><span>Dystopian</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian1.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Hunger Game</h3>
+<div class="price"> RM84.95 <span>RM150.43</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian1"
+    data-title="The Hunger Game"
+    data-price="84.95"
+    data-isbn="9781668002179"
+    data-desc="A ruthless government forces young people to fight in a televised battle for survival; themes of resistance and class divide."
+    data-img="dystopian1.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Shatter Me</h3>
+<div class="price"> RM84.95 <span>RM150.43</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian2"
+    ddata-title="Shatter Me"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A young adult dystopian thriller about a girl whose touch is lethal and who confronts a controlling world."
+    data-img="dystopian2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian3.jpg" alt="">
+</div>
+<div class="content">
+<h3>Children of Men</h3>
+<div class="price"> RM84.95 <span>RM150.43</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian3"
+    data-title="Children of Men"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A future Britain faces global infertility and authoritarian rule; a small resistance group fights for hope."
+    data-img="dystopian3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian4.jpg" alt="">
+</div>
+<div class="content">
+<h3>1984</h3>
+<div class="price">RM79.16 <span>RM92.64</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian4"
+    data-title="1984"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A powerful classic about a society under total surveillance and control by a single party and “Big Brother.” Themes include propaganda, censorship, and loss of individuality."
+    data-img="dystopian4.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Fahrenheit 451</h3>
+<div class="price">RM18.85 <span>RM34.90</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian5"
+    data-title="Fahrenheit 451"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A tale of a future where books are banned and burned to suppress critical thinking and maintain conformity"
+    data-img="dystopian5.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Divergent</h3>
+<div class="price">RM20.18 <span>RM39.02</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian6"
+    data-title="Divergent"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="In a society divided into personality factions, one girl doesn’t fit; she uncovers dangerous truths about control and identity."
+    data-img="dystopian6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian7.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Maze Runner</h3>
+<div class="price">RM68.14 <span>RM82.63</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian7"
+    data-title="The Maze Runner"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="Teenagers wake up in a deadly maze with no memory of the outside world and must find a way out"
+    data-img="dystopian7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="dystopian8.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Giver</h3>
+<div class="price">RM33.33 <span>RM44.44</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="dystopian8"
+    data-title="The Giver"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A seemingly perfect community hides emotional suppression and conformity; a boy discovers the truth about freedom and choice."
+    data-img="dystopian8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="dystopian.html" class="see-more-btn">see more</a>
+</section>
+
+
+<section class="featured" id="featured">
+<h1 class="heading8"><a name="action"><span>Action</span></a></h1>
+<div class="swiper featured-slider">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action1.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Riftwalkers</h3>
+<div class="price">RM52.73 <span>RM66.74</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action1"
+    data-title="The Riftwalkers"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="This novel follows elite warriors who can cross dangerous rifts between worlds to stop an ancient threat from destroying reality. As enemies rise from multiple dimensions, survival depends on loyalty, skill, and sacrifice."
+    data-img="action1.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action2.jpg" alt="">
+</div>
+<div class="content">
+<h3>Lone Wolf</h3>
+<div class="price">RM10.89 <span>RM23.13</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action2"
+    data-title="Lone Wolf"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A highly trained operative is forced to work alone after being betrayed by his own organization. Hunted from all sides, he must rely on instinct and combat expertise to uncover the truth and stay alive."
+    data-img="action2.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action3.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Asset</h3>
+<div class="price">RM26.40 <span>RM46.30</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action3"
+    data-title="The Asset"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="A former intelligence asset is pulled back into the world of espionage when a classified secret resurfaces. Fast-paced missions and political deception blur the line between ally and enemy."
+    data-img="action3.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action4.jpg" alt="">
+</div>
+<div class="content">
+<h3>Blind Hate</h3>
+<div class="price">RM35.25 <span>RM48.06</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action4"
+    data-title="Blind Hate"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="Driven by revenge, a damaged anti-hero plunges into violent confrontations fueled by anger and loss. Each fight reveals how hatred can both empower and destroy a person."
+    data-img="action4.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action5.jpg" alt="">
+</div>
+<div class="content">
+<h3>Winsome Lose Some</h3>
+<div class="price">RM42.66 <span>RM57.42</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action5"
+    data-title="Winsome Lose Some"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="This action-packed story explores high-risk operations where every victory comes at a heavy cost. The characters must accept that survival often means sacrificing comfort, trust, or morality."
+    data-img="action5.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action6.jpg" alt="">
+</div>
+<div class="content">
+<h3>Gloom</h3>
+<div class="price">RM80.99 <span>RM95.89</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action6"
+    data-title="Gloom"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="Set in a dark and collapsing world, a lone fighter battles both external enemies and inner despair. The story blends intense action with psychological tension and survival instincts."
+    data-img="action6.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action7.jpg" alt="">
+</div>
+<div class="content">
+<h3>The Secret City</h3>
+<div class="price">RM85.45 <span>RM97.23</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action7"
+    data-title="The Secret City"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="Hidden beneath the surface lies a city filled with conspiracies, power struggles, and violent secrets. The protagonist is drawn into explosive conflicts that could expose or destroy the city forever."
+    data-img="action7.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+
+<div class="swiper-slide box">
+<div class="icons">
+<a href="#" class="fa-solid fa-magnifying-glass"></a>
+<a href="#" class="fa-solid fa-heart"></a>
+<a href="#" class="fa-solid fa-eye"></a>
+</div>
+<div class="image">
+<img src="action8.jpg" alt="">
+</div>
+<div class="content">
+<h3>Evolution</h3>
+<div class="price">RM53.48 <span>RM65.49</span></div>
+<!-- ===== POPUP ===== -->
+  <button class="btn open-popup"
+    data-id="action8"
+    data-title="Evolution"
+    data-price="31.65"
+    data-isbn="9781668002179"
+    data-desc="As humanity faces a rapidly changing threat, warriors must adapt or perish in brutal combat scenarios. The novel emphasizes growth, resilience, and the cost of becoming stronger."
+    data-img="action8.jpg">
+    Add To Cart
+  </button>
+</div>
+</div>
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+</div>
+
+<a href="action.html" class="see-more-btn">see more</a>
+</section>
+
+<section class="footerContainer">
+<div class="box">
+<a href="#"> <i class="fa-solid fa-phone"></i> +60 11-2345 6789 </a>
+<a href="#"> <i class="fa-solid fa-envelope"></i> LCOWbookstore@gmail.com </a>
+<a href="https://www.instagram.com/grey._.poetries?igsh=MWttdGFzejg0cmk1cg==" target="_blank"><i class="fa-brands fa-square-instagram" target="_blank"></i> Instagram </a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfFWr_w9D346NSQUY8oNSffHd2lIH3kLz8Rgdx1EF8wl5FSrw/viewform?usp=sf_link" target="_blank"><i class="fa-solid fa-clipboard"></i> Order Form </a>
+</div>
+
+<div class="footerNav">
+<ul>
+<li><a href=""> Home </a></li>
+<li><a href="bestseller.html"> Best Seller </a></li>
+<li><a href="fictions.html"> Fictions </a></li>
+<li><a href="newarrivals.html"> New Arrivals </a></li>
+<li><a href="aboutus.html"> About </a></li>
+<li><a href="contact.html"> Contact </a></li>
+</ul>
+</div>
+
+<div class="footerBottom"> 
+<p>Copyright @2024; <span> Lost Chapters of World.</span> All Right Reserved!</p>
+</div>
+</section>
+
+<script>
+const books = document.querySelectorAll('.book');
+
+window.addEventListener('scroll', () => {
+    const s = Math.min(window.scrollY, 400);
+
+    books.forEach(book => {
+        const bx = +book.dataset.x;
+        const by = +book.dataset.y;
+        const br = +book.dataset.r;
+
+        const x = bx + (bx > 0 ? s * 0.35 : -s * 0.35);
+        const y = by + s * 0.12;
+        const r = br + s * 0.04;
+
+        book.style.setProperty('--x', `${x}px`);
+        book.style.setProperty('--y', `${y}px`);
+        book.style.setProperty('--r', `${r}deg`);
+    });
+});
+</script>
+
+<script>
+/* ================= HEADER ICON TOGGLES ================= */
+const navbar = document.querySelector('.navbar');
+const searchForm = document.querySelector('.search-form');
+const cart = document.querySelector('.cart-items-container');
+const searchBtn = document.querySelector('#search-btn');
+const cartBtn = document.querySelector('#cart-btn');
+const menuBtn = document.querySelector('#menu-btn');
+
+searchBtn.onclick = () => {
+  searchForm.classList.toggle('active');
+  navbar.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+cartBtn.onclick = () => {
+  cart.classList.toggle('active');
+  searchForm.classList.remove('active');
+  navbar.classList.remove('active');
+};
+
+menuBtn.onclick = () => {
+  navbar.classList.toggle('active');
+  searchForm.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+/* ================= MOCK BOOK DATA ================= */
+/* ================= COMPLETE BOOK LIST ================= */
+const Books = [
+  // fictions
+  { id: "book13", title: "The Silent Patient", price: 18.99, img: "book13.jpg" },
+  { id: "book15", title: "Catherine House", price: 57.26, img: "book15.jpg" },
+  { id: "book19", title: "Desires of the Dead", price: 19.69, img: "book19.jpg" },
+  { id: "book20", title: "Just My Type", price: 22.30, img: "book20.jpg" },
+  { id: "book23", title: "Muse of Nightmares", price: 31.05, img: "book23.jpg" },
+  { id: "book26", title: "The Drowning Woman", price: 44.84, img: "book26.jpg" },
+  { id: "book28", title: "The Darkest Mind", price: 42.90, img: "book28.jpg" },
+  { id: "book30", title: "Last Days", price: 26.90, img: "book30.jpg" },
+  { id: "book31", title: "Watching You", price: 31.65, img: "book31.jpg" },
+  { id: "book33", title: "The Dispossessed", price: 32.00, img: "book33.jpg" },
+  { id: "book45", title: "Late Nights on Air", price: 36.72, img: "book45.jpg" },
+  { id: "book51", title: "Beside A Burning Sea", price: 28.40, img: "book51.jpg" },
+  { id: "book53", title: "The Spellman Files", price: 36.72, img: "book53.jpg" },
+  { id: "book56", title: "I Am Number Four", price: 15.50, img: "book56.jpg" },
+  { id: "book57", title: "Out of the Blue", price: 34.50, img: "book57.jpg" },
+  { id: "book58", title: "The One Hundred Year Old Man Who Climbed Out The Window and Disappeared", price: 32.30, img: "book58.jpg" },
+  { id: "book59", title: "Help Me, Jacques Cousteau", price: 20.45, img: "book59.jpg" },
+  { id: "book61", title: "Me and Kaminski", price: 20.88, img: "book61.jpg" },
+
+  // romance
+  { id: "romance2", title: "Waking Romeo", price: 35.24, img: "romance2.jpg" },
+  { id: "romance3", title: "The Moon and More", price: 30.28, img: "romance3.jpg" },
+  { id: "romance4", title: "The Loving Game", price: 30.75, img: "romance4.jpg" },
+  { id: "romance5", title: "Mile High", price: 65.03, img: "romance5.jpg" },
+  { id: "romance6", title: "Final Offer", price: 37.74, img: "romance6.jpg" },
+  { id: "romance7", title: "All Rhodes Lead Here", price: 60.40, img: "romance7.jpg" },
+
+  // fantasy
+  { id: "fantasy1", title: "Dance of Thieves", price: 22.58, img: "fantasy1.jpg" },
+  { id: "fantasy2", title: "A Darker Shade of Magic", price: 42.90, img: "fantasy2.jpg" },
+  { id: "fantasy3", title: "The Final Empire", price: 50.00, img: "fantasy3.jpg" },
+  { id: "fantasy4", title: "Once Upon A Broken Heart", price: 50.00, img: "fantasy4.jpg" },
+  { id: "fantasy5", title: "Caraval", price: 55.90, img: "fantasy5.jpg" },
+  { id: "fantasy6", title: "Powerless", price: 60.00, img: "fantasy6.jpg" },
+  { id: "fantasy7", title: "The Serpent & The Wings of Night", price: 80.00, img: "fantasy7.jpg" },
+  { id: "fantasy8", title: "Divine Rivals", price: 75.64, img: "fantasy8.jpg" },
+
+  // horror
+  { id: "horror1", title: "Last Days", price: 50.00, img: "horror1.jpg" },
+  { id: "horror2", title: "Dark Matter", price: 75.50, img: "horror2.jpg" },
+  { id: "horror3", title: "Naomi's Room", price: 45.10, img: "horror3.jpg" },
+  { id: "horror4", title: "The Exorcist's House", price: 90.55, img: "horror4.jpg" },
+  { id: "horror5", title: "Marla", price: 18.55, img: "horror5.jpg" },
+  { id: "horror6", title: "Echo", price: 60.10, img: "horror6.jpg" },
+  { id: "horror7", title: "Dead Inside", price: 55.70, img: "horror7.jpg" },
+  { id: "horror8", title: "No One Rides for Free", price: 31.65, img: "horror8.jpg" },
+
+  // mystery
+  { id: "mystery2", title: "Then She Was Gone", price: 20.00, img: "mystery2.jpg" },
+  { id: "mystery3", title: "The Good Girl", price: 140.00, img: "mystery3.jpg" },
+  { id: "mystery4", title: "The Other Mrs", price: 55.00, img: "mystery4.jpg" },
+  { id: "mystery5", title: "Local Woman Missing", price: 45.00, img: "mystery5.jpg" },
+  { id: "mystery6", title: "Little Secrets", price: 45.00, img: "mystery6.jpg" },
+  { id: "mystery7", title: "Things We Do In The Dark", price: 55.10, img: "mystery7.jpg" },
+  { id: "mystery8", title: "The Only One Left", price: 56.15, img: "mystery8.jpg" },
+
+  // thriller
+  { id: "thriller2", title: "The Overnight Guest", price: 30.30, img: "thriller2.jpg" },
+  { id: "thriller3", title: "All The Sinners Bleed", price: 53.15, img: "thriller3.jpg" },
+  { id: "thriller4", title: "The One", price: 43.65, img: "thriller4.jpg" },
+  { id: "thriller5", title: "Look Closer", price: 55.13, img: "thriller5.jpg" },
+  { id: "thriller6", title: "The Inmate", price: 58.02, img: "thriller6.jpg" },
+  { id: "thriller7", title: "Never Lie", price: 48.54, img: "thriller7.jpg" },
+  { id: "thriller8", title: "The Last Word", price: 56.32, img: "thriller8.jpg" },
+
+  // scifi
+  { id: "scifi1", title: "The Dispossessed", price: 29.65, img: "scifi1.jpg" },
+  { id: "scifi2", title: "Children of Time", price: 45.19, img: "scifi2.jpg" },
+  { id: "scifi3", title: "Dune", price: 88.18, img: "scifi3.jpg" },
+  { id: "scifi4", title: "Childhood's End", price: 25.05, img: "scifi4.jpg" },
+  { id: "scifi5", title: "Hyperion", price: 55.03, img: "scifi5.jpg" },
+  { id: "scifi6", title: "The Last Watch", price: 65.14, img: "scifi6.jpg" },
+  { id: "scifi7", title: "Red Rising", price: 40.22, img: "scifi7.jpg" },
+  { id: "scifi8", title: "Ten Low", price: 40.13, img: "scifi8.jpg" },
+
+  // dystopian
+  { id: "dystopian1", title: "The Hunger Game", price: 84.95, img: "dystopian1.jpg" },
+  { id: "dystopian2", title: "Shatter Me", price: 31.65, img: "dystopian2.jpg" },
+  { id: "dystopian3", title: "Children of Men", price: 31.65, img: "dystopian3.jpg" },
+  { id: "dystopian4", title: "1984", price: 31.65, img: "dystopian4.jpg" },
+  { id: "dystopian5", title: "Fahrenheit 451", price: 31.65, img: "dystopian5.jpg" },
+  { id: "dystopian6", title: "Divergent", price: 31.65, img: "dystopian6.jpg" },
+  { id: "dystopian7", title: "The Maze Runner", price: 31.65, img: "dystopian7.jpg" },
+  { id: "dystopian8", title: "The Giver", price: 31.65, img: "dystopian8.jpg" },
+
+  // action
+  { id: "action1", title: "The Riftwalkers", price: 52.73, img: "action1.jpg" },
+  { id: "action2", title: "Lone Wolf", price: 10.89, img: "action2.jpg" },
+  { id: "action3", title: "The Asset", price: 26.40, img: "action3.jpg" },
+  { id: "action4", title: "Blind Hate", price: 35.25, img: "action4.jpg" },
+  { id: "action5", title: "Winsome Lose Some", price: 42.66, img: "action5.jpg" },
+  { id: "action6", title: "Gloom", price: 80.99, img: "action6.jpg" },
+  { id: "action7", title: "The Secret City", price: 85.45, img: "action7.jpg" },
+  { id: "action8", title: "Evolution", price: 53.48, img: "action8.jpg" },
+
+  // Best Sellers
+  { title: "The Heaven & Earth Grocery Store", img: "literary9.jpg", price: "RM130.30" },
+  { title: "Iron Flame (The Empyrean Book 2)", img: "book63.jpg", price: "RM86.85" },
+  { title: "Icebreaker", img: "book64.jpg", price: "RM181.53" },
+  { title: "Lessons in Chemistry", img: "book65.jpg", price: "RM71.54" },
+
+/* =======================
+   SCIENCE FICTION
+======================= */
+  { id: "scifi1", title: "The Left Hand of Darkness", price: 84.95, img: "science1.jpg" },
+  { id: "scifi2", title: "Hyperion", price: 42.50, img: "science2.jpg" },
+  { id: "scifi3", title: "Jurassic Park", price: 46.90, img: "science3.jpg" },
+  { id: "scifi4", title: "Network Effect", price: 95.90, img: "science4.jpg" },
+  { id: "scifi5", title: "I Am Number Four", price: 50.43, img: "science5.jpg" },
+  { id: "scifi6", title: "The Deep", price: 42.59, img: "science6.jpg" },
+  { id: "scifi7", title: "Light From Uncommon Stars", price: 129.79, img: "science7.jpg" },
+  { id: "scifi8", title: "Dead Silence", price: 99.01, img: "science8.jpg" },
+
+/* =======================
+   ROMANCE
+======================= */
+  { id: "romance1", title: "The Lotus Eater", price: 25.00, img: "rom1.jpg" },
+  { id: "romance2", title: "Star", price: 16.00, img: "rom2.jpg" },
+  { id: "romance3", title: "Late Nights on Air", price: 84.95, img: "rom3.jpg" },
+  { id: "romance4", title: "Safe Haven", price: 10.00, img: "rom4.jpg" },
+  { id: "romance5", title: "Sisters", price: 20.90, img: "rom5.jpg" },
+  { id: "romance6", title: "First Comes Love", price: 65.95, img: "rom6.jpg" },
+  { id: "romance7", title: "Beside A Burning Sea", price: 74.43, img: "rom7.jpg" },
+
+/* =======================
+   FANTASY
+======================= */
+  { id: "fantasy1", title: "The Fifth Season", price: 67.37, img: "fant1.jpg" },
+  { id: "fantasy2", title: "Children of Blood & Bone", price: 41.90, img: "fant2.jpg" },
+  { id: "fantasy3", title: "The Fellowship of the Ring", price: 57.95, img: "fant3.jpg" },
+  { id: "fantasy4", title: "Get In Trouble", price: 17.90, img: "fant4.jpg" },
+  { id: "fantasy5", title: "The Black Tides of Heaven", price: 85.31, img: "fant5.jpg" },
+  { id: "fantasy6", title: "The Lord of the Rings", price: 82.48, img: "fant6.jpg" },
+  { id: "fantasy7", title: "The Night Circus", price: 79.13, img: "fant7.jpg" },
+  { id: "fantasy8", title: "Ember in the Ashes", price: 59.34, img: "fant8.jpg" },
+  { id: "fantasy9", title: "Alice's Adventures in Wonderland", price: 12.90, img: "fant9.jpg" },
+  { id: "fantasy10", title: "Angeology", price: 122.79, img: "fant10.jpg" },
+
+/* =======================
+   DOMESTIC FICTION
+======================= */
+  { id: "domestic1", title: "Crazy Rich Asians", price: 37.95, img: "dom1.jpg" },
+  { id: "domestic2", title: "Out Of The Blue", price: 46.31, img: "dom2.jpg" },
+  { id: "domestic3", title: "Help Me, Jacques Cousteau", price: 10.00, img: "dom3.jpg" },
+  { id: "domestic4", title: "The Cinderella Pact", price: 20.69, img: "dom4.jpg" },
+  { id: "domestic5", title: "The Spellman Files", price: 10.00, img: "dom5.jpg" },
+  { id: "domestic6", title: "Danielle Steel", price: 99.90, img: "dom6.jpg" },
+  { id: "domestic7", title: "Truths I Never Told You", price: 67.44, img: "dom7.jpg" },
+  { id: "domestic8", title: "All the Ugly & Wonderful Things", price: 84.23, img: "dom8.jpg" },
+  { id: "domestic9", title: "Wrong Place Wrong Time", price: 49.69, img: "dom9.jpg" },
+  { id: "domestic10", title: "Do No Harm", price: 93.18, img: "dom10.jpg" },
+  { id: "domestic11", title: "A Light in the Forest", price: 120.97, img: "dom11.jpg" },
+  { id: "domestic12", title: "The Keeper of Stories", price: 13.92, img: "dom12.jpg" },
+
+/* =======================
+   LITERARY
+======================= */
+  { id: "literary1", title: "Me and Kaminski", price: 8.29, img: "literary1.jpg" },
+  { id: "literary2", title: "More Than It Hurts You", price: 116.50, img: "literary2.jpg" },
+  { id: "literary3", title: "The Secret History", price: 33.19, img: "literary3.jpg" },
+  { id: "literary4", title: "Station Eleven", price: 97.74, img: "literary4.jpg" },
+  { id: "literary5", title: "Convenience Store Woman", price: 25.00, img: "literary5.jpg" },
+  { id: "literary6", title: "The Goldfinch", price: 48.79, img: "literary6.jpg" },
+  { id: "literary7", title: "Trust", price: 71.50, img: "literary7.jpg" },
+  { id: "literary8", title: "The Covenant of Water", price: 57.39, img: "literary8.jpg" },
+  { id: "literary9", title: "The Heaven & Earth Grocery Store", price: 130.30, img: "literary9.jpg" },
+  { id: "literary10", title: "Frankenstein", price: 66.98, img: "literary10.jpg" }
+];
+
+/* ================= SEARCH ELEMENTS ================= */
+const searchInput = document.getElementById("search-box");
+const suggestionsBox = document.getElementById("suggestions");
+
+/* ================= LIVE SUGGESTIONS ================= */
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+
+  if (!query) return;
+
+  const matches = Books.filter(book =>
+    book.title.toLowerCase().includes(query)
+  );
+
+  matches.forEach(book => {
+    const div = document.createElement("div");
+    div.textContent = book.title;
+    div.style.cursor = "pointer";
+    div.style.padding = "0.5rem 1rem";
+
+    div.onclick = () => {
+      window.location.href = `search.html?q=${encodeURIComponent(book.title)}`;
+    };
+
+    suggestionsBox.appendChild(div);
+  });
+});
+
+/* ================= ENTER KEY OR ICON CLICK ================= */
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    goToSearch();
+  }
+});
+
+document.querySelector(".search-form label").onclick = goToSearch;
+
+function goToSearch() {
+  const query = searchInput.value.trim();
+  if (query !== "") {
+    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+  }
+}
+
+/* ================= SEARCH PAGE RESULTS ================= */
+const params = new URLSearchParams(window.location.search);
+const searchQuery = params.get("q") || "";
+
+if (document.getElementById("search-title")) {
+  document.getElementById("search-title").innerText = `Search results for "${searchQuery}"`;
+  document.getElementById("searchInput").value = searchQuery;
+
+  const resultsContainer = document.getElementById("results");
+  const filtered = books.filter(book =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  document.getElementById("result-count").innerText = `Showing ${filtered.length} result(s)`;
+
+  resultsContainer.innerHTML = filtered.map(book => `
+    <div class="gallery-box">
+      <img src="${book.img}" alt="${book.title}">
+      <div class="gallery-info">
+        <h4>${book.title}</h4>
+        <p>${book.price}</p>
+      </div>
+    </div>
+  `).join("");
+}
+</script>
+
+<!-- ===== POPUP JS ===== -->
+<script>
+const popup = document.getElementById("product-popup");
+const popupTitle = document.getElementById("popup-title");
+const popupDesc = document.getElementById("popup-desc");
+const popupImg = document.getElementById("popup-img");
+const popupISBN = document.getElementById("popup-isbn");
+const popupQty = document.getElementById("popup-qty");
+const popupDate = document.getElementById("popup-date");
+const popupBundle = document.getElementById("popup-bundle");
+const popupTotal = document.getElementById("popup-total");
+
+let basePrice = 0;
+
+document.querySelectorAll(".open-popup").forEach(btn => {
+  btn.onclick = e => {
+    e.preventDefault();
+
+    popup.dataset.id = btn.dataset.id;
+    popup.dataset.title = btn.dataset.title;
+    popup.dataset.img = btn.dataset.img;
+
+    basePrice = parseFloat(btn.dataset.price);
+
+    popupTitle.textContent = btn.dataset.title;
+    popupDesc.textContent = btn.dataset.desc;
+    popupISBN.textContent = btn.dataset.isbn;
+    popupImg.src = btn.dataset.img;
+
+    popupQty.value = 1;
+    popupBundle.value = 0;
+    popupDate.value = "";
+
+    updateTotal();
+    popup.classList.add("active");
+  };
+});
+
+function updateTotal() {
+  const qty = parseInt(popupQty.value) || 1;
+  const bundle = parseFloat(popupBundle.value);
+  popupTotal.textContent = ((basePrice * qty) + bundle).toFixed(2);
+}
+
+popupQty.oninput = updateTotal;
+popupBundle.onchange = updateTotal;
+
+document.getElementById("popup-close").onclick = () => {
+  popup.classList.remove("active");
+};
+
+document.getElementById("popup-add-cart").onclick = () => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const item = {
+    id: popup.dataset.id,
+    title: popupTitle.textContent,
+    price: basePrice,
+    qty: parseInt(popupQty.value),
+    img: popupImg.src,
+    delivery: popupDate.value,
+    bundle: popupBundle.options[popupBundle.selectedIndex].text
+  };
+
+  const existing = cart.find(i => i.id === item.id);
+  if (existing) existing.qty += item.qty;
+  else cart.push(item);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  popup.classList.remove("active");
+};
+</script>
+
+<!-- ===== CART COUNT JS ===== -->
+<script>
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.getElementById("cart-count").textContent =
+    cart.reduce((sum, item) => sum + item.qty, 0);
+}
+
+document.addEventListener("DOMContentLoaded", updateCartCount);
+</script>
+
+<script>
+const book = document.querySelectorAll('.book');
+
+window.addEventListener('scroll', () => {
+    const s = Math.min(window.scrollY, 400);
+
+    books.forEach(book => {
+        const bx = +book.dataset.x;
+        const by = +book.dataset.y;
+        const br = +book.dataset.r;
+
+        const x = bx + (bx > 0 ? s * 0.35 : -s * 0.35);
+        const y = by + s * 0.12;
+        const r = br + s * 0.04;
+
+        book.style.setProperty('--x', `${x}px`);
+        book.style.setProperty('--y', `${y}px`);
+        book.style.setProperty('--r', `${r}deg`);
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+ var swiper = new Swiper(".featured-slider", {
+      spaceBetween: 10,
+      loop: true,
+      centeredSlides: true,
+      autoplay: {
+        delay: 9500,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        450: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+</script>
+
+</body>
+</html>

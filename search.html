@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>Lost Chapters Of Worlds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Cinzel+Decorative:wght@400;700&family=Crimson+Text:wght@600&family=DM+Serif+Display&family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Merienda&family=Nanum+Pen+Script&family=PT+Serif&family=Poppins:wght@600&family=Redressed&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+:root{
+--main-color: #d3ad7f;
+--black: #13131a;
+--bg: #010103;
+--border: .1rem solid rgba(255,255,255,.3);
+}
+
+*{
+margin:0; padding:0;
+box-sizing: border-box;
+outline: none; border: none;
+text-decoration: none;
+text-transform: capitalize;
+transition: .2s linear;
+}
+
+html{
+font-size: 62.5%;
+scroll-behavior: smooth;
+scroll-padding-top: 9rem;
+overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+width: .8rem;
+}
+
+html::-webkit-scrollbar-track{
+background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+background: #fff;
+border-radius: 5rem;
+}
+
+body{
+background: #EAD3BA;
+}
+
+section{
+padding: 2rem 7%;
+}
+
+.heading{
+text-align: center;
+margin-top: 50px;
+margin-bottom: 2rem;
+position: relative;
+}
+
+.heading span{
+font-size: 7rem;
+padding: .5rem 2rem;
+color: var(--black);
+font-family: 'Cinzel Decorative', serif;
+}
+
+.btn{
+margin-top: 1rem;
+display: inline-block;
+padding: .9rem 3rem;
+font-size: 1.7rem;
+color: #fff;
+background: var(--main-color);
+cursor: pointer;
+}
+
+.btn:hover{
+letter-spacing: .2rem;
+}
+
+.header{
+background: var(--bg);
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 1.5rem 7%;
+border-bottom: var(--border);
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 1000;
+}
+
+.header .logo img{
+height: 6rem;
+}
+
+.header .navbar ul{
+list-style: none;
+margin: 0 1rem;
+font-size: 1rem;
+color: #fff;
+font-family: 'Cinzel Decorative', serif;
+font-weight: bold;
+}
+
+.header .navbar ul li{
+position: relative;
+float: left;
+}
+
+header .navbar ul li a{
+font-size: 15px;
+padding: 15px;
+color: white;
+display: block;
+}
+
+.header .navbar ul li a:hover{
+color: var(--main-color);
+border-bottom: .1rem solid var(--main-color);
+padding-bottom: .5rem
+}
+
+.header .navbar ul li a.active{
+color: var(--main-color);
+border-bottom: .1rem solid var(--main-color);
+padding-bottom: .5rem;
+}
+
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: var(--bg);
+display: none;
+}
+
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+
+.header .icons div{
+font-size: 2.5rem;
+color: #fff;
+cursor: pointer;
+margin-left: 2rem;
+}
+
+.header .icons div:hover{
+color:var(--main-color);
+}
+
+#menu-btn{
+display: none;
+}
+
+.header .search-form.active{
+transform: scaleY(1);
+}
+
+.header .search-form input{
+height: 100%;
+width: 100%;
+font-size: 1.6rem;
+color: var(--black);
+padding: 1rem;
+text-transform: none;
+}
+
+.header .search-form label{
+cursor: pointer;
+font-size: 2.2rem;
+margin-right: 1.5rem;
+color: var(--black);
+}
+
+.header .search-form label:hover{
+color: var(--main-color);
+}
+
+.header .cart-items-container{
+position: absolute;
+top: 100%; right: -100%;
+height: calc(100vh - 9.5rem);
+width: 35rem;
+background: #fff;
+padding: 0 1.5rem;
+}
+
+.header .cart-items-container.active{
+right:0;
+}
+
+.header .cart-items-container .cart-item{
+position: relative;
+margin: 2rem 0;
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.header .cart-items-container .cart-item .fa-xmark{
+position: absolute;
+top: 1rem; right: 1rem;
+font-size: 2rem;
+cursor: pointer;
+color: var(--black);
+}
+
+.header .cart-items-container .cart-item .fa-xmark:hover{
+color: var(--main-color);
+}
+
+.header .cart-items-container .cart-item img{
+height: 7rem;
+}
+
+.header .cart-items-container .cart-item .content h3{
+font-size: 1.8rem;
+color: var(--black);
+padding-bottom: .5rem;
+font-family: 'Josefin Sans', sans-serif;
+}
+
+.header .cart-items-container .cart-item .content .price{
+font-size: 1.4rem;
+color: #BC9779;
+font-family: 'Josefin Sans', sans-serif;
+}
+
+.header .cart-items-container .btn{
+margin-top: 11rem;
+width: 100%;
+text-align: center;
+font-family: 'Poppins', sans-serif;
+}
+
+/* ================= SEARCH SUGGESTIONS DROPDOWN ================= */
+.search-form {
+  position: absolute;
+  top: 115%;
+  right: 7%;
+  width: 50rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.2s ease;
+  z-index: 10000;
+  border-radius: .5rem;
+}
+
+.search-form.active {
+  transform: scaleY(1);
+}
+
+.search-form input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-form label {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+#suggestions {
+  max-height: 22rem;
+  overflow-y: auto;
+  background: #fff;
+}
+
+#suggestions div {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+#suggestions div:hover {
+  background: var(--main-color);
+  color: #fff;
+}
+
+/* ================= SEARCH PAGE ================= */
+
+.search-page{
+  margin-top:140px;
+  padding:4rem 7%;
+  min-height:80vh;
+}
+
+.search-header{
+  text-align:center;
+  margin-bottom:3rem;
+}
+
+.search-header h2{
+  font-size:3.2rem;
+  font-family:'Cinzel Decorative', serif;
+}
+
+.search-again{
+  margin-top:1.5rem;
+}
+
+.search-again input{
+  width:320px;
+  padding:1rem 2rem;
+  border-radius:30px;
+  font-size:1.4rem;
+}
+
+/* MPH-like meta row */
+.search-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:3rem 0;
+  font-size:1.5rem;
+}
+
+.search-meta select{
+  padding:.6rem 1.5rem;
+  border-radius:20px;
+  font-size:1.4rem;
+}
+
+/* ================= PRODUCT GRID ================= */
+
+.search-results{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+  gap:3rem;
+}
+
+.gallery-box{
+  background:#fff;
+  padding:1.5rem;
+  text-align:center;
+}
+
+.gallery-box img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+}
+
+.gallery-info h4{
+  font-size:1.6rem;
+  margin-top:1rem;
+}
+
+.gallery-info p{
+  font-size:1.4rem;
+  margin-top:.5rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<a href="#" class="logo">
+<img src="logo2.png" alt="">
+</a>
+
+<nav class="navbar">
+  <ul>
+
+    <!-- HOME -->
+    <li>
+      <a href="index.html">Home +</a>
+      <ul>
+        <li><a href="index.html#whychooseus">For Book Lovers</a></li>
+        <li><a href="index.html#collectionlist">Collection List</a></li>
+        <li><a href="index.html#featuredbooks">Featured Books</a></li>
+        <li><a href="index.html#specialday">Special Day, Special Book</a></li>
+      </ul>
+    </li>
+
+    <!-- BEST SELLER -->
+    <li>
+      <a href="bestseller.html">Best Seller +</a>
+      <ul>
+        <li><a href="bestseller.html#top5">Top 5 Best Seller</a></li>
+        <li><a href="bestseller.html#book">Book of the Year</a></li>
+        <li><a href="bestseller.html#author">Author of the Year</a></li>
+      </ul>
+    </li>
+
+    <!-- FICTIONS -->
+    <li>
+      <a href="fiction.html">Fictions +</a>
+      <ul>
+        <li><a href="romance.html">Romance</a></li>
+        <li><a href="fantasy.html">Fantasy</a></li>
+        <li><a href="horror.html">Horror</a></li>
+        <li><a href="mystery.html">Mystery</a></li>
+        <li><a href="thriller.html">Thriller</a></li>
+        <li><a href="scifi.html">Sci-Fi</a></li>
+        <li><a href="dystopian.html">Dystopian</a></li>
+        <li><a href="action.html">Action</a></li>
+      </ul>
+    </li>
+
+    <!-- NEW ARRIVALS -->
+    <li>
+      <a href="newarrivals.html">New Arrivals +</a>
+      <ul>
+        <li><a href="newarrivals.html#scifi">Science Fiction</a></li>
+        <li><a href="newarrivals.html#romance">Romance</a></li>
+        <li><a href="newarrivals.html#fantasy">Fantasy</a></li>
+        <li><a href="newarrivals.html#domestic">Domestic Fiction</a></li>
+        <li><a href="newarrivals.html#literary">Literary</a></li>
+      </ul>
+    </li>
+
+    <!-- ABOUT US -->
+    <li>
+      <a href="aboutus.html">About Us +</a>
+      <ul>
+        <li><a href="aboutus.html#prologue">Prologue</a></li>
+        <li><a href="aboutus.html#ourteam">Our Team</a></li>
+      </ul>
+    </li>
+
+    <!-- CONTACT -->
+    <li>
+      <a href="contact.html">Contact +</a>
+      <ul>
+        <li><a href="contact.html#messenger">Messenger Owl</a></li>
+        <li><a href="contact.html#gform">Google Form</a></li>
+      </ul>
+    </li>
+
+  </ul>
+</nav>
+
+<div class="icons">
+<div class="fa-solid fa-magnifying-glass" id="search-btn"></div>
+<div class="fa-solid fa-cart-shopping" id="cart-btn"></div>
+<div class="fa-solid fa-bars" id="menu-btn"></div>
+</div>
+
+<div class="search-form">
+  <input type="search" id="search-box" placeholder="search here...">
+  <label for="search-box" class="fa-solid fa-magnifying-glass"></label>
+  <div id="suggestions"></div>
+</div>
+
+<div class="cart-items-container">
+<div class="cart-item">
+<span class="fa-solid fa-xmark"></span>
+<img src="romance8.jpg" alt="">
+<div class="content">
+<h3>Archer's Voice</h3>
+<div class="price">RM38.01</div>
+</div>
+</div>
+
+<div class="cart-item">
+<span class="fa-solid fa-xmark"></span>
+<img src="fantasy6.jpg" alt="">
+<div class="content">
+<h3>Powerless</h3>
+<div class="price">RM60.00</div>
+</div>
+</div>
+
+<div class="cart-item">
+<span class="fa-solid fa-xmark"></span>
+<img src="horror3.jpg" alt="">
+<div class="content">
+<h3>Naomi's Room</h3>
+<div class="price">RM45.10</div>
+</div>
+</div>
+
+<div class="cart-item">
+<span class="fa-solid fa-xmark"></span>
+<img src="mystery5.jpg" alt="">
+<div class="content">
+<h3>Local Woman Missing</h3>
+<div class="price">RM45.00</div>
+</div>
+</div>
+<a href="#" class="btn">checkout now</a>
+</div>
+
+</header>
+
+<!-- ================= SEARCH CONTENT ================= -->
+
+<section class="search-page">
+
+  <div class="search-header">
+    <h2 id="search-title"></h2>
+    <div class="search-again">
+      <input type="text" id="searchInput">
+    </div>
+  </div>
+
+  <div class="search-meta">
+    <p id="result-count"></p>
+    <select>
+      <option>Sort by</option>
+      <option>Price: Low to High</option>
+      <option>Price: High to Low</option>
+    </select>
+  </div>
+
+  <div class="search-results" id="results"></div>
+
+</section>
+
+
+<script>
+/* ================= HEADER ICON TOGGLES ================= */
+const navbar = document.querySelector('.navbar');
+const searchForm = document.querySelector('.search-form');
+const cart = document.querySelector('.cart-items-container');
+const searchBtn = document.querySelector('#search-btn');
+const cartBtn = document.querySelector('#cart-btn');
+const menuBtn = document.querySelector('#menu-btn');
+
+searchBtn.onclick = () => {
+  searchForm.classList.toggle('active');
+  navbar.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+cartBtn.onclick = () => {
+  cart.classList.toggle('active');
+  searchForm.classList.remove('active');
+  navbar.classList.remove('active');
+};
+
+menuBtn.onclick = () => {
+  navbar.classList.toggle('active');
+  searchForm.classList.remove('active');
+  cart.classList.remove('active');
+};
+
+/* ================= MOCK BOOK DATA ================= */
+/* ================= COMPLETE BOOK LIST ================= */
+const books = [
+  // fictions.featuredBooks
+  { id: "book13", title: "The Silent Patient", price: 18.99, img: "book13.jpg" },
+  { id: "book15", title: "Catherine House", price: 57.26, img: "book15.jpg" },
+  { id: "book19", title: "Desires of the Dead", price: 19.69, img: "book19.jpg" },
+  { id: "book20", title: "Just My Type", price: 22.30, img: "book20.jpg" },
+  { id: "book23", title: "Muse of Nightmares", price: 31.05, img: "book23.jpg" },
+  { id: "book26", title: "The Drowning Woman", price: 44.84, img: "book26.jpg" },
+  { id: "book28", title: "The Darkest Mind", price: 42.90, img: "book28.jpg" },
+  { id: "book30", title: "Last Days", price: 26.90, img: "book30.jpg" },
+  { id: "book31", title: "Watching You", price: 31.65, img: "book31.jpg" },
+  { id: "book33", title: "The Dispossessed", price: 32.00, img: "book33.jpg" },
+  { id: "book45", title: "Late Nights on Air", price: 36.72, img: "book45.jpg" },
+  { id: "book51", title: "Beside A Burning Sea", price: 28.40, img: "book51.jpg" },
+  { id: "book53", title: "The Spellman Files", price: 36.72, img: "book53.jpg" },
+  { id: "book56", title: "I Am Number Four", price: 15.50, img: "book56.jpg" },
+  { id: "book57", title: "Out of the Blue", price: 34.50, img: "book57.jpg" },
+  { id: "book58", title: "The One Hundred Year Old Man Who Climbed Out The Window and Disappeared", price: 32.30, img: "book58.jpg" },
+  { id: "book59", title: "Help Me, Jacques Cousteau", price: 20.45, img: "book59.jpg" },
+  { id: "book61", title: "Me and Kaminski", price: 20.88, img: "book61.jpg" },
+
+  // romance
+  { id: "romance2", title: "Waking Romeo", price: 35.24, img: "romance2.jpg" },
+  { id: "romance3", title: "The Moon and More", price: 30.28, img: "romance3.jpg" },
+  { id: "romance4", title: "The Loving Game", price: 30.75, img: "romance4.jpg" },
+  { id: "romance5", title: "Mile High", price: 65.03, img: "romance5.jpg" },
+  { id: "romance6", title: "Final Offer", price: 37.74, img: "romance6.jpg" },
+  { id: "romance7", title: "All Rhodes Lead Here", price: 60.40, img: "romance7.jpg" },
+
+  // fantasy
+  { id: "fantasy1", title: "Dance of Thieves", price: 22.58, img: "fantasy1.jpg" },
+  { id: "fantasy2", title: "A Darker Shade of Magic", price: 42.90, img: "fantasy2.jpg" },
+  { id: "fantasy3", title: "The Final Empire", price: 50.00, img: "fantasy3.jpg" },
+  { id: "fantasy4", title: "Once Upon A Broken Heart", price: 50.00, img: "fantasy4.jpg" },
+  { id: "fantasy5", title: "Caraval", price: 55.90, img: "fantasy5.jpg" },
+  { id: "fantasy6", title: "Powerless", price: 60.00, img: "fantasy6.jpg" },
+  { id: "fantasy7", title: "The Serpent & The Wings of Night", price: 80.00, img: "fantasy7.jpg" },
+  { id: "fantasy8", title: "Divine Rivals", price: 75.64, img: "fantasy8.jpg" },
+
+  // horror
+  { id: "horror1", title: "Last Days", price: 50.00, img: "horror1.jpg" },
+  { id: "horror2", title: "Dark Matter", price: 75.50, img: "horror2.jpg" },
+  { id: "horror3", title: "Naomi's Room", price: 45.10, img: "horror3.jpg" },
+  { id: "horror4", title: "The Exorcist's House", price: 90.55, img: "horror4.jpg" },
+  { id: "horror5", title: "Marla", price: 18.55, img: "horror5.jpg" },
+  { id: "horror6", title: "Echo", price: 60.10, img: "horror6.jpg" },
+  { id: "horror7", title: "Dead Inside", price: 55.70, img: "horror7.jpg" },
+  { id: "horror8", title: "No One Rides for Free", price: 31.65, img: "horror8.jpg" },
+
+  // mystery
+  { id: "mystery2", title: "Then She Was Gone", price: 20.00, img: "mystery2.jpg" },
+  { id: "mystery3", title: "The Good Girl", price: 140.00, img: "mystery3.jpg" },
+  { id: "mystery4", title: "The Other Mrs", price: 55.00, img: "mystery4.jpg" },
+  { id: "mystery5", title: "Local Woman Missing", price: 45.00, img: "mystery5.jpg" },
+  { id: "mystery6", title: "Little Secrets", price: 45.00, img: "mystery6.jpg" },
+  { id: "mystery7", title: "Things We Do In The Dark", price: 55.10, img: "mystery7.jpg" },
+  { id: "mystery8", title: "The Only One Left", price: 56.15, img: "mystery8.jpg" },
+
+  // thriller
+  { id: "thriller2", title: "The Overnight Guest", price: 30.30, img: "thriller2.jpg" },
+  { id: "thriller3", title: "All The Sinners Bleed", price: 53.15, img: "thriller3.jpg" },
+  { id: "thriller4", title: "The One", price: 43.65, img: "thriller4.jpg" },
+  { id: "thriller5", title: "Look Closer", price: 55.13, img: "thriller5.jpg" },
+  { id: "thriller6", title: "The Inmate", price: 58.02, img: "thriller6.jpg" },
+  { id: "thriller7", title: "Never Lie", price: 48.54, img: "thriller7.jpg" },
+  { id: "thriller8", title: "The Last Word", price: 56.32, img: "thriller8.jpg" },
+
+  // scifi
+  { id: "scifi1", title: "The Dispossessed", price: 29.65, img: "scifi1.jpg" },
+  { id: "scifi2", title: "Children of Time", price: 45.19, img: "scifi2.jpg" },
+  { id: "scifi3", title: "Dune", price: 88.18, img: "scifi3.jpg" },
+  { id: "scifi4", title: "Childhood's End", price: 25.05, img: "scifi4.jpg" },
+  { id: "scifi5", title: "Hyperion", price: 55.03, img: "scifi5.jpg" },
+  { id: "scifi6", title: "The Last Watch", price: 65.14, img: "scifi6.jpg" },
+  { id: "scifi7", title: "Red Rising", price: 40.22, img: "scifi7.jpg" },
+  { id: "scifi8", title: "Ten Low", price: 40.13, img: "scifi8.jpg" },
+
+  // dystopian
+  { id: "dystopian1", title: "The Hunger Game", price: 84.95, img: "dystopian1.jpg" },
+  { id: "dystopian2", title: "Shatter Me", price: 31.65, img: "dystopian2.jpg" },
+  { id: "dystopian3", title: "Children of Men", price: 31.65, img: "dystopian3.jpg" },
+  { id: "dystopian4", title: "1984", price: 31.65, img: "dystopian4.jpg" },
+  { id: "dystopian5", title: "Fahrenheit 451", price: 31.65, img: "dystopian5.jpg" },
+  { id: "dystopian6", title: "Divergent", price: 31.65, img: "dystopian6.jpg" },
+  { id: "dystopian7", title: "The Maze Runner", price: 31.65, img: "dystopian7.jpg" },
+  { id: "dystopian8", title: "The Giver", price: 31.65, img: "dystopian8.jpg" },
+
+  // action
+  { id: "action1", title: "The Riftwalkers", price: 52.73, img: "action1.jpg" },
+  { id: "action2", title: "Lone Wolf", price: 10.89, img: "action2.jpg" },
+  { id: "action3", title: "The Asset", price: 26.40, img: "action3.jpg" },
+  { id: "action4", title: "Blind Hate", price: 35.25, img: "action4.jpg" },
+  { id: "action5", title: "Winsome Lose Some", price: 42.66, img: "action5.jpg" },
+  { id: "action6", title: "Gloom", price: 80.99, img: "action6.jpg" },
+  { id: "action7", title: "The Secret City", price: 85.45, img: "action7.jpg" },
+  { id: "action8", title: "Evolution", price: 53.48, img: "action8.jpg" },
+
+  // Best Sellers
+  { title: "The Heaven & Earth Grocery Store", img: "literary9.jpg", price: "RM130.30" },
+  { title: "Iron Flame (The Empyrean Book 2)", img: "book63.jpg", price: "RM86.85" },
+  { title: "Icebreaker", img: "book64.jpg", price: "RM181.53" },
+  { title: "Lessons in Chemistry", img: "book65.jpg", price: "RM71.54" },
+
+/* =======================
+   SCIENCE FICTION
+======================= */
+  { id: "scifi1", title: "The Left Hand of Darkness", price: 84.95, img: "science1.jpg" },
+  { id: "scifi2", title: "Hyperion", price: 42.50, img: "science2.jpg" },
+  { id: "scifi3", title: "Jurassic Park", price: 46.90, img: "science3.jpg" },
+  { id: "scifi4", title: "Network Effect", price: 95.90, img: "science4.jpg" },
+  { id: "scifi5", title: "I Am Number Four", price: 50.43, img: "science5.jpg" },
+  { id: "scifi6", title: "The Deep", price: 42.59, img: "science6.jpg" },
+  { id: "scifi7", title: "Light From Uncommon Stars", price: 129.79, img: "science7.jpg" },
+  { id: "scifi8", title: "Dead Silence", price: 99.01, img: "science8.jpg" },
+
+/* =======================
+   ROMANCE
+======================= */
+  { id: "romance1", title: "The Lotus Eater", price: 25.00, img: "rom1.jpg" },
+  { id: "romance2", title: "Star", price: 16.00, img: "rom2.jpg" },
+  { id: "romance3", title: "Late Nights on Air", price: 84.95, img: "rom3.jpg" },
+  { id: "romance4", title: "Safe Haven", price: 10.00, img: "rom4.jpg" },
+  { id: "romance5", title: "Sisters", price: 20.90, img: "rom5.jpg" },
+  { id: "romance6", title: "First Comes Love", price: 65.95, img: "rom6.jpg" },
+  { id: "romance7", title: "Beside A Burning Sea", price: 74.43, img: "rom7.jpg" },
+
+/* =======================
+   FANTASY
+======================= */
+  { id: "fantasy1", title: "The Fifth Season", price: 67.37, img: "fant1.jpg" },
+  { id: "fantasy2", title: "Children of Blood & Bone", price: 41.90, img: "fant2.jpg" },
+  { id: "fantasy3", title: "The Fellowship of the Ring", price: 57.95, img: "fant3.jpg" },
+  { id: "fantasy4", title: "Get In Trouble", price: 17.90, img: "fant4.jpg" },
+  { id: "fantasy5", title: "The Black Tides of Heaven", price: 85.31, img: "fant5.jpg" },
+  { id: "fantasy6", title: "The Lord of the Rings", price: 82.48, img: "fant6.jpg" },
+  { id: "fantasy7", title: "The Night Circus", price: 79.13, img: "fant7.jpg" },
+  { id: "fantasy8", title: "Ember in the Ashes", price: 59.34, img: "fant8.jpg" },
+  { id: "fantasy9", title: "Alice's Adventures in Wonderland", price: 12.90, img: "fant9.jpg" },
+  { id: "fantasy10", title: "Angeology", price: 122.79, img: "fant10.jpg" },
+
+/* =======================
+   DOMESTIC FICTION
+======================= */
+  { id: "domestic1", title: "Crazy Rich Asians", price: 37.95, img: "dom1.jpg" },
+  { id: "domestic2", title: "Out Of The Blue", price: 46.31, img: "dom2.jpg" },
+  { id: "domestic3", title: "Help Me, Jacques Cousteau", price: 10.00, img: "dom3.jpg" },
+  { id: "domestic4", title: "The Cinderella Pact", price: 20.69, img: "dom4.jpg" },
+  { id: "domestic5", title: "The Spellman Files", price: 10.00, img: "dom5.jpg" },
+  { id: "domestic6", title: "Danielle Steel", price: 99.90, img: "dom6.jpg" },
+  { id: "domestic7", title: "Truths I Never Told You", price: 67.44, img: "dom7.jpg" },
+  { id: "domestic8", title: "All the Ugly & Wonderful Things", price: 84.23, img: "dom8.jpg" },
+  { id: "domestic9", title: "Wrong Place Wrong Time", price: 49.69, img: "dom9.jpg" },
+  { id: "domestic10", title: "Do No Harm", price: 93.18, img: "dom10.jpg" },
+  { id: "domestic11", title: "A Light in the Forest", price: 120.97, img: "dom11.jpg" },
+  { id: "domestic12", title: "The Keeper of Stories", price: 13.92, img: "dom12.jpg" },
+
+/* =======================
+   LITERARY
+======================= */
+  { id: "literary1", title: "Me and Kaminski", price: 8.29, img: "literary1.jpg" },
+  { id: "literary2", title: "More Than It Hurts You", price: 116.50, img: "literary2.jpg" },
+  { id: "literary3", title: "The Secret History", price: 33.19, img: "literary3.jpg" },
+  { id: "literary4", title: "Station Eleven", price: 97.74, img: "literary4.jpg" },
+  { id: "literary5", title: "Convenience Store Woman", price: 25.00, img: "literary5.jpg" },
+  { id: "literary6", title: "The Goldfinch", price: 48.79, img: "literary6.jpg" },
+  { id: "literary7", title: "Trust", price: 71.50, img: "literary7.jpg" },
+  { id: "literary8", title: "The Covenant of Water", price: 57.39, img: "literary8.jpg" },
+  { id: "literary9", title: "The Heaven & Earth Grocery Store", price: 130.30, img: "literary9.jpg" },
+  { id: "literary10", title: "Frankenstein", price: 66.98, img: "literary10.jpg" }
+];
+
+/* ================= SEARCH ELEMENTS ================= */
+const searchInput = document.getElementById("search-box");
+const suggestionsBox = document.getElementById("suggestions");
+
+/* ================= LIVE SUGGESTIONS ================= */
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  suggestionsBox.innerHTML = "";
+
+  if (!query) return;
+
+  const matches = books.filter(book =>
+    book.title.toLowerCase().includes(query)
+  );
+
+  matches.forEach(book => {
+    const div = document.createElement("div");
+    div.textContent = book.title;
+    div.style.cursor = "pointer";
+    div.style.padding = "0.5rem 1rem";
+
+    div.onclick = () => {
+      window.location.href = `search.html?q=${encodeURIComponent(book.title)}`;
+    };
+
+    suggestionsBox.appendChild(div);
+  });
+});
+
+/* ================= ENTER KEY OR ICON CLICK ================= */
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    goToSearch();
+  }
+});
+
+document.querySelector(".search-form label").onclick = goToSearch;
+
+function goToSearch() {
+  const query = searchInput.value.trim();
+  if (query !== "") {
+    window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+  }
+}
+
+/* ================= SEARCH PAGE RESULTS ================= */
+const params = new URLSearchParams(window.location.search);
+const searchQuery = params.get("q") || "";
+
+if (document.getElementById("search-title")) {
+  document.getElementById("search-title").innerText = `Search results for "${searchQuery}"`;
+  document.getElementById("searchInput").value = searchQuery;
+
+  const resultsContainer = document.getElementById("results");
+  const filtered = books.filter(book =>
+    book.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  document.getElementById("result-count").innerText = `Showing ${filtered.length} result(s)`;
+
+  resultsContainer.innerHTML = filtered.map(book => `
+    <div class="gallery-box">
+      <img src="${book.img}" alt="${book.title}">
+      <div class="gallery-info">
+        <h4>${book.title}</h4>
+        <p>${book.price}</p>
+      </div>
+    </div>
+  `).join("");
+}
+</script>
+
+</body>
+</html>
